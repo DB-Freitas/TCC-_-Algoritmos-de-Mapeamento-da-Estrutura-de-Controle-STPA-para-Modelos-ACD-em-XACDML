@@ -21,31 +21,38 @@ Neste repositório você encontrará:
 
 ## Estrutura de Controle SCSI
 
-![Diagrama da Estrutura de Controle](Imagens/estruturadecontroleSCSI.png)
+![Diagrama da Estrutura de Controle](imagens/estruturadecontroleSCSI.png)
 
 ## Algoritmos de Mapeamento (pseudocódigo)
 
 ### Algoritmo #1 - Mapear sinais de entrada externos, control actions e feedback da estrutura de controle STPA para os dead states correspondentes em XACDML
 
-![Algoritmo 1](Imagens/alg_1.png)
+![Algoritmo 1](imagens/alg_1.png)
 
 ### Algoritmo #2 - Mapear os controladores, sensores, atuadores e processo controlado da estrutura de controle STPA para recursos e atividades em XACDML
 
-![Algoritmo 2](Imagens/alg_2.png)
+![Algoritmo 2](imagens/alg_2.png)
 
 ### Algoritmo #3 - Mapear cada sinal de entrada externo da estrutura de controle STPA para uma atividade externa em XACDML
 
-![Algoritmo 3](Imagens/alg_3.png)
+![Algoritmo 3](imagens/alg_3.png)
 
 ### Algoritmo #4 - Mapear cada control action e feedback da estrutura de controle STPA para uma atividade interna em XACDML
  
-![Algoritmo 4](Imagens/alg_4.png)
+![Algoritmo 4](imagens/alg_4.png)
 
 ### Algoritmo #5 - Gerar Observadores
 
-![Algoritmo 5](Imagens/alg_5.png)
+![Algoritmo 5](imagens/alg_5.png)
 
-## Como Gerar o Código Java Automaticamente
+## Como Gerar o Código Java Automaticamente (Linux Ubuntu 24.04)
+
+Antes de executar transformações XSLT, é necessário instalar a ferramenta xsltproc.
+Podemos instala-la com 2 comandos: 
+> * apt search xsltproc 
+> * sudo apt install xsltproc
+
+Após a instalaçãodo xsltproc:
 
 1. Abra o terminal na pasta que contém:
 
@@ -84,7 +91,8 @@ Para executar o modelo de simulação basta executar o arquivo ".java" gerado. A
 
 Que será onde os resultados do modelo serão apresentados, através desses resultados podemos demonstrar que o simulador executa corretamente o fluxo associado às activities, queues, control actions e feedback produzidos pelo mapeamento.
 
-![Recorte da folha de resultados](Imagens/recortedafolhaderesultados.png)
+![Recorte da folha de resultados](imagens/recortedafolhaderesultados.png)
+
 Recorte dos resultados.
 
 ## Conclusão
