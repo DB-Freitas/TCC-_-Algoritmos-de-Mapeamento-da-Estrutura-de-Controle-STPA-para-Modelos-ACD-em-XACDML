@@ -1,5 +1,4 @@
 // Arquivo HistogramEntry.java 
-// Implementa��o das Classes do Sistema de Gerenciamento da Simula��o
 // 16.Jul.1999 Wladimir
 
 package simula.manager;
@@ -11,23 +10,20 @@ import java.io.PrintStream;
 
 /**
  * Entrada para os histogramas do modelo.
- * Entry.obsid � usado como link (opcional) para o Observador
  */
 public class HistogramEntry extends Entry
 {
-	private static int lastid;	// identificador �NICO para os histogramas
-	static boolean hasSerialized = true; // "lastid j� foi serializado"
+	private static int lastid;	// identifimas
+	static boolean hasSerialized = true; // "lasti
 	
 	/**
 	 * largura de cada coluna 
 	 */
 	private float width;			
 	/**
-	 * n�mero de colunas
 	 */
 	private int   num_columns;	
 	/**
-	 * in�cio do histograma
 	 */
 	private float start;		
 	/**
@@ -35,8 +31,8 @@ public class HistogramEntry extends Entry
 	 */
 	private short kind;			
 												
-	transient simula.Histogram SimObj;		// objeto de simula��o
-                              					// n�o � serializado
+	transient simula.Histogram SimObj;		// objeto de
+                              					// ndo
   		
 	public String toString()
 	{
@@ -49,7 +45,6 @@ public class HistogramEntry extends Entry
 		return stb.toString();
 	}
 	/**
-	 * constr�i um objeto com id gerado internamente. 
 	 */
 	public HistogramEntry()
 	{
@@ -90,7 +85,6 @@ public class HistogramEntry extends Entry
 	}
 	
 	void DoReport(PrintStream os)
-	// Realiza relat�rio espec�fico do histograma (tabela)
 	{
 		if(SimObj == null)	// erro
 			return;

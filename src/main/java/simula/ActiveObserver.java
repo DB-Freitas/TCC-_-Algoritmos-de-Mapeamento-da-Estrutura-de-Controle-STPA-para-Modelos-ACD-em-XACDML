@@ -1,5 +1,4 @@
 // Arquivo ActiveObserver.java
-// Implementação das Classes do Grupo de Resultados da Biblioteca de Simulação JAVA
 // 16.Abr.1999	Wladimir
 
 package simula;
@@ -35,7 +34,6 @@ public class ActiveObserver extends Observer
 	}
 
 	/**
-	 * observa tempo ocioso do estado ativo, mas somente se não observar nenhum atributo
 	 */
 	public void StateChange(short to)
 	{
@@ -56,12 +54,11 @@ public class ActiveObserver extends Observer
 			else 
 				stat.Add(clock - beginidletime);
 			
-			beginidletime = -1;		// sinaliza que está BUSY
+			beginidletime = -1;
 		}
 	}
 	
 	/**
-	 * realiza estatísticas do atributo att.
 	 */
 	private void Sample(Entity e)
 	{
@@ -75,7 +72,6 @@ public class ActiveObserver extends Observer
 	}
 			
 	/**
-	 * processa entidade e manda para próximo observer da lista
 	 */
 	public void Incoming(Entity e)
 	{
@@ -85,7 +81,6 @@ public class ActiveObserver extends Observer
 	}
 	
 	/**
-	 * processa entidade e manda para próximo observer da lista
 	 */
 	public void Outgoing(Entity e)
 	{

@@ -1,5 +1,4 @@
 // Arquivo ObserverEntry.java 
-// Implementa��o das Classes do Sistema de Gerenciamento da Simula��o
 // 21.Mai.1999 Wladimir
 
 package simula.manager;
@@ -13,12 +12,11 @@ import java.io.PrintStream;
 
 /**
  * Entrada para os diveros observadores do modelo.
- * Entry.obsid � usado como link para a lista de Observadores
  */
 public class ObserverEntry extends Entry
 {
-	private static int lastid;	// identificador �NICO para os observadores
-	static boolean hasSerialized = true; // "lastid j� foi serializado"
+	private static int lastid;	// identificado observadores
+	static boolean hasSerialized = true; // "lastid
 		
 	/**
 	 * QUEUE, RESOURCE, ACTIVE, PROCESSOR, DELAY:
@@ -35,24 +33,13 @@ public class ObserverEntry extends Entry
 	 */
 	private short type;
 	/**
-	 * id de quem � observado
 	 */
 	private String observed;
 
 	/**
-	 * atributo observado<p>
-	 * para QUEUE, se "time" -> queue time, se null -> length
-	 * para RESOURCE, sempre null
-	 * para ACTIVE, se null -> idle time, sen�o o pr�prio atributo
-	 * para PROCESSOR, o atributo a que ser� atribu�do exp
-	 * para DELAY, se null -> stamp, se "obs" -> mede delay
 	 */
 	private String att;							
-		
-	/**
-	 * para PROCESSOR, express�o; 
-	 * para DELAY, se null -> na entrada, se "" -> na sa�da
-	 */
+
 	private String exp;		
 
 	/**
@@ -64,8 +51,8 @@ public class ObserverEntry extends Entry
 															
 																
 																		
-	transient Observer SimObj;			// objeto de simula��o
-                              			// n�o � serializado
+	transient Observer SimObj;			// objeto de
+                              			// nizado
   			
 	public String toString()
 	{
@@ -102,8 +89,8 @@ public class ObserverEntry extends Entry
 		return "TYPE???";
 	}
 	/**
-	 * constr�i um objeto com id gerado internamente;
-	 * determina o tipo do observador e quem � observado.
+	 * crnamente;
+	 * determina o tipo do observador e qrvado.
 	 */
 	public ObserverEntry(short obsType, String who)
 	{
@@ -210,14 +197,8 @@ public class ObserverEntry extends Entry
 		if(obsid == null)			// fim da lista de observadores
 			return true;
 			
-		return m.GetObserver(obsid).Generate(m); // cria pr�ximo
+		return m.GetObserver(obsid).Generate(m); // cr
 	}
-	
-	/**
-	 * Realiza o relat�rio dos dados observados em forma textual;
-	 * Deve ser chamado com a simula��o parada;
-	 * obstime � o intervalo de tempo a que as estat�sticas se referem.
-	 */
 	void DoReport(PrintStream os, float obstime)
 	{
 		if(SimObj == null)	// erro

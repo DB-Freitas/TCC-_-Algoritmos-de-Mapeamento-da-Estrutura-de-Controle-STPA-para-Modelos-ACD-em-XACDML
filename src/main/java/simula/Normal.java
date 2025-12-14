@@ -1,5 +1,4 @@
 // Arquivo Normal.java
-// Implementação das Classes do Grupo Utilitário da Biblioteca de Simulação JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
@@ -12,13 +11,11 @@ public class Normal extends Distribution
 	private double mean, std_dev;
 
 	/**
-	 * associa a stream à distribuição e recebe parâmetros.
 	 */
 	public Normal(Sample s, double Mean, double Std_dev)
 	{super(s); mean = Mean; std_dev = Std_dev;}
 
 	/**
-	 * obtém uma amostra segundo a dada distribuição.
 	 */
 	public double Draw()
 	{

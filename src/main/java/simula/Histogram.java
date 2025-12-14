@@ -1,9 +1,4 @@
 // Arquivo Histogram.java
-// Implementação das Classes do Grupo de Resultados da Biblioteca de Simulação JAVA
-// 16.Abr.1999 Wladimir
-
-// Código original em C adaptado de 
-// Watkins, Kevin. Discrete event simulation in C. 1993. McGraw-Hill International.
 
 package simula;
 
@@ -32,7 +27,6 @@ public class Histogram
 	public static final short SERIES = 0, FREQUENCY = 1, WEIGHTED = 2;
 
 	/**
-	 * constrói um histograma vazio com início em start, cada coluna de largura width
 	 * com num_columns colunas e do tipo SERIES, FREQUENCY ou WEIGHTED
 	 */
 	public Histogram(Scheduler s, float  start, float  width, int num_columns, short kind)
@@ -136,17 +130,14 @@ public class Histogram
 	}
 
 	/**
-	 * calcula a média.
 	 */
 	public final float Mean(){return sum_xf / sum_f;}
 
 	/**
-	 * calcula o desvio padrão; retorna 0 se não houverem dados suficientes.
 	 */
 	public final float StdDev(){return (float)Math.sqrt(Variance());}
 
 	/**
-	 * calcula a variância; retorna 0 se não houverem dados suficientes.
 	 */
 	public final float Variance()
 	{	
@@ -156,7 +147,6 @@ public class Histogram
 	}
 
 	/**
-	 * retorna máximo valor observado.
 	 */
 	public final float Max()
 	{
@@ -171,7 +161,6 @@ public class Histogram
 	}
 
 	/**
-	 * retorna mínimo valor observado.
 	 */
 	public final float Min()
 	{
@@ -186,7 +175,6 @@ public class Histogram
 	}
 
 	/**
-	 * retorna o número de observações
 	 */
 	public final int NumObs(){return (int)sum_f;}
 

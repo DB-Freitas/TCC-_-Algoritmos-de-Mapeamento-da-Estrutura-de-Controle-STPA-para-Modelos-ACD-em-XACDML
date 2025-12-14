@@ -1,24 +1,20 @@
 // Arquivo Poisson.java
-// Implementação das Classes do Grupo Utilitário da Biblioteca de Simulação JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
 
 /**
- * Distribuição de Poisson
  */
 public class Poisson extends Distribution
 {
 	private double mean, sq, alxm, g, oldm = -1.0;
 
 	/**
-	 * associa a stream à distribuição e recebe parâmetros.
 	 */
 	public Poisson(Sample s, double Mean)
 	{super(s); mean = Mean;}
 
 	/**
-	 * obtém uma amostra segundo a dada distribuição.
 	 */
 	public double Draw()
 	{

@@ -1,5 +1,4 @@
 // Arquivo  QueueEntry.java 
-// Implementa��o das Classes do Sistema de Gerenciamento da Simula��o
 // 21.Mai.1999 Wladimir
 
 package simula.manager;
@@ -13,29 +12,25 @@ import java.io.ObjectOutputStream;
  */
 public class QueueEntry extends Entry
 {
-	private static int lastid;	// identificador �NICO para as filas
-	static boolean hasSerialized = true; // "lastid j� foi serializado"
+	private static int lastid;	// identificadfilas
+	static boolean hasSerialized = true; // "lastiddo"
 	
 	/**
 	 * FIFO, STACK, PRIORITY:
-	 * constantes que identificam
-	 * a pol�tica da fila
 	 */
 	public final static short FIFO = 0;			// constantes que identificam
-	public final static short STACK = 1;		// a pol�tica da fila
+	public final static short STACK = 1;		// a a
 	public final static short PRIORITY = 2;
 		
 	/**
-	 * qtde m�x de entidades na fila
 	 */
 	private short max;
 	/**
-	 * pol�tica da fila
-	 */ 
+	 */
 	private short policy;							
 		
-  transient simula.DeadState SimObj;	// objeto de simula��o
-                              			// n�o � serializado
+  transient simula.DeadState SimObj;	// objeto de s
+                              			// nalizado
 	
 	public String toString()
 	{
@@ -64,8 +59,6 @@ public class QueueEntry extends Entry
 		return "POLICY??";
 	}
   /**
-   * constr�i um objeto com id gerado internamente;
-   * preenche com argumentos padr�o os demais campos.
    */
 	public QueueEntry()
 	{

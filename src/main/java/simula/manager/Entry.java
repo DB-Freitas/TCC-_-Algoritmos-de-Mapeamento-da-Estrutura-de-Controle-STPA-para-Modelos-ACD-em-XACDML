@@ -1,24 +1,23 @@
 // Arquivo  Entry.java 
-// Implementação das Classes do Sistema de Gerenciamento da Simulação
+// Implementaï¿½ï¿½o das Classes do Sistema de Gerenciamento da Simulaï¿½ï¿½o
 // 21.Mai.1999 Wladimir
 
 package simula.manager;
 
 /**
  * Classe base para todas as entradas do Sistema de Gerenciamento. 
- * Fornece métodos para uso em Hashtables e mantém identificador
- * único do objeto em todo modelo. Unicidade dever ser garantida
+ * Fornece metodos para uso em Hashtables e mantem identificador
+ * unico do objeto em todo modelo. Unicidade dever ser garantida
  * pelos descendentes e por quem mais atribuir o seu valor.
  */
 public abstract class Entry implements java.io.Serializable
 {
-	protected String id;							// identificador ÚNICO EM TODO O MODELO do objeto
+	protected String id;							// identificador uÃ©NICO EM TODO O MODELO do objeto
 	/**
 	 * identificador do observador
 	 */
 	protected String obsid;	
 	/**
-	 * nome (para o usuário referenciar)
 	 */
 	protected String name;		
 	
@@ -27,9 +26,7 @@ public abstract class Entry implements java.io.Serializable
 		return "<Entry id=\""+id+"\" obsid=\""+obsid+"\" name=\""+name+"\"/>\r\n";
 	}
 	
-	/**
-	 * constrói um objeto com dado id; id deve ser único e não nulo.
-	 */
+	/***/
 	public Entry(String id){this.id = id; name = id;}
 	
 	public void copyAttributes(Entry v_e)
@@ -38,10 +35,8 @@ public abstract class Entry implements java.io.Serializable
 		obsid = v_e.obsid;
 		name = v_e.name;
 	}
-	
+
 	/**
-	 * Cria objeto de simulação baseado nos dados fornecidos 
-	 * é chamado pelo SimulationManager após a criação do 
 	 *  objetos Scheduler interno ao manager.
 	 */
 	abstract boolean Generate(SimulationManager m);

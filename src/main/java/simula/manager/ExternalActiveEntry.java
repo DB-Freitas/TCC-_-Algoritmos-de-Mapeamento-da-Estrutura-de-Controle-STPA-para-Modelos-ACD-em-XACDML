@@ -1,5 +1,4 @@
 // Arquivo  ExternalActiveEntry.java 
-// Implementação das Classes do Sistema de Gerenciamento da Simulação
 // 21.Mai.1999 Wladimir
 
 package simula.manager;
@@ -33,8 +32,6 @@ public class ExternalActiveEntry extends ActiveEntry
 	return stb.toString();
   }
   /**
-   * constrói um objeto com id gerado internamente;
-   * @param	generate	deve especificar se é um estado Generate (true) ou Destroy(false).
    */
   public ExternalActiveEntry(boolean generate)
   {
@@ -73,7 +70,6 @@ public class ExternalActiveEntry extends ActiveEntry
 	}
 
   /**
-   * Ajusta os parâmetros comuns aos ActiveState's
    */
   protected boolean Setup(SimulationManager m)
 	{

@@ -1,5 +1,4 @@
 // Arquivo Expression.java
-// Implementa��o das Classes do Grupo Utilit�rio da Biblioteca de Simula��o JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
@@ -13,14 +12,14 @@ import java.util.Stack;
 public class Expression
 {
 
-	private String rpn;						// express�o na forma rpn
-	private Stack stack;					// pilha para execu��o da express�o na forma rpn
+	private String rpn;						// ex
+	private Stack stack;					// pilha para
 	private String errm;					// mensagem de erro de parsing
 
 	private static PushbackReader infix;	// stream que permite lookahead
-	private static short token;				// �ltimo token
-	private static String att;				// atributo do �ltimo token retornado
-	private static String last;				// �ltimo valor (num ou id) obtido pelo lex
+	private static short token;				// oken
+	private static String att;				// atributoretornado
+	private static String last;				// m ou id) obtido pelo lex
 	private static boolean err;				// flag erro de parsing
 	private static StringBuffer errmsg;		// ref ao buffer suprido pelo objeto
 
@@ -47,7 +46,6 @@ public class Expression
 								EOF	= 18;	// fim da linha
 
 	/**
-	 * tabela de vari�veis globais da simula��o.
 	 */
 	public static Variables globals;	
 
@@ -56,15 +54,13 @@ public class Expression
 		System.out.println("token=" + token + " " + att);
 	}
 	private static void GetToken()
-	// analisador l�xico
-	// armazena em 'token' tipo do pr�ximo token da express�o em infix; atributo fica em att.
 	{
 		try			// read throws IOException
 		{
 		
 		char c = (char)infix.read();
 			
-		while(Character.isWhitespace(c))							// come os espa�os
+		while(Character.isWhitespace(c))							// come o
 			c = (char)infix.read();
 
 		if(c == (char)-1)
@@ -93,7 +89,7 @@ public class Expression
 			return;
 		}
 
-		if(Character.isDigit(c) || c == '.' || (c == '-' && unaryminusok))	// tenta extrair um n�mero
+		if(Character.isDigit(c) || c == '.' || (c == '-' && unaryminusok))	// tenta extra
 		{
 			unaryminusok = false; 
 			boolean pread = false;
@@ -105,7 +101,7 @@ public class Expression
 			do
 			{
 				mallow = false;
-				if(c == '.') pread = true;		// mudan�as de estado
+				if(c == '.') pread = true;		// muda
 				if((c == 'e') || (c == 'E'))
 				{
 					eread = true;
@@ -119,7 +115,7 @@ public class Expression
 			} while(Character.isDigit(c) || (c == '.' && !pread) 
 				|| (c == '-' && mallow) || ((c == 'e' || c == 'E') && !eread));
 
-			if((Character.isLetter(c) || c == '.' || c > '~') && c != (char)-1) // erro l�xico
+			if((Character.isLetter(c) || c == '.' || c > '~') && c != (char)-1) // erro
 			{
 				buf.append(c);
 				att = buf.toString();
@@ -193,7 +189,6 @@ public class Expression
 	}
 
 	/**
-	 * analisa express�o exp e retorna-a na forma rpn se estiver correta, sen�o null.
 	 */
 	protected static synchronized String Parse(String exp, StringBuffer errm)
 	{
@@ -219,9 +214,7 @@ public class Expression
 	}
 
 	/** 
-	 * analisador sint�tico LL(1) usando a t�cnica de predictive parsing
-	 * Exp l�gica
-	 */ 
+	 */
 	private static String  C()
 	{
 		System.out.println("C->");
@@ -258,7 +251,7 @@ public class Expression
 		
 		switch(token)
 		{
-			case ID: case LP: case NUM: return CTprime(R(), null);	// pode dar pau!!!!!!!!!!
+			case ID: case LP: case NUM: return CTprime(R(), null);	//!!!!!!
 			case ERR: errmsg.append("Lex err: ").append(att); err = true; return "";
 			default: errmsg.append("CT-> err: expected ID, (, NUM but found ").append(att);
 				err = true; return "";
@@ -408,7 +401,6 @@ public class Expression
 	}
 
 	/**
-	 * constr�i express�o constante (para ser usado pelas subclasses)
 	 */
 	protected Expression(float value)
 	{
@@ -418,7 +410,6 @@ public class Expression
 	}
 	
 	/**
-	 * constr�i express�o a partir de uma string contendo-a na forma infixa.
 	 */
 	public Expression(String infix)
 	{
@@ -433,7 +424,6 @@ public class Expression
 	}
 	
 	/**
-	 * determina valor da express�o utilizando par�metros da entidade e e das vari�veis globais.
 	 */
 	public float Evaluate(Entity e)
 	{
@@ -451,9 +441,8 @@ public class Expression
 		{
 			if(is.ttype == StreamTokenizer.TT_WORD)
 			{
-				if(Character.isLetter(is.sval.charAt(0)))			// � um identificador
+				if(Character.isLetter(is.sval.charAt(0)))			// dentificador
 				{
-					// faz procura nas propriedades e vari�veis globais
 					float x = e.GetAttribute(is.sval);
 					if(Float.isNaN(x))
 					{
@@ -465,7 +454,7 @@ public class Expression
 						return Float.NaN;		
 					stack.push(new Float(x));	
 				}
-				else													// � n�emero
+				else													//ro
 				{
 					try
 					{

@@ -1,5 +1,4 @@
 // Arquivo  SimulationManager.java 
-// Implementa��o das Classes do Sistema de Gerenciamento da Simula��o
 // 11.Jun.1999 Wladimir
 
 package simula.manager;
@@ -11,14 +10,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
-/**
- * Classe principal do sistema de gerenciamento. Concentra todos os
- * pedidos de cria��o e remo��o de Entry's no modelo. 
- * Verifica consist�ncia e prov� controle de concorr�ncia.
- * Gerencia diferentes reposit�rios de entry's de diversos tipos
- * e gera programa de simula��o. 
- * @author	Wladimir
- */
 public class SimulationManager implements Serializable
 {
 	private HashMap queues, resources, activestates,
@@ -31,7 +22,7 @@ public class SimulationManager implements Serializable
 	transient Scheduler s;
 	transient Sample sp;
 	private transient float endtime = 0;	// instante programado 
-											// de t�rmino da simula��o
+											//
 	private transient float resettime = 0;  // instante em que as 
 
 	/**
@@ -188,7 +179,6 @@ public class SimulationManager implements Serializable
 	}
 		
 	/**
-	 * Atualiza vari�veis globais.
 	 */
 	public boolean UpdateGlobals(AttributeTable globalVars)
 	{
@@ -238,7 +228,6 @@ public class SimulationManager implements Serializable
 			{
 				synchronized(activestates)
 				{
-					// remove todas as refer�ncias a esse queue
 					Iterator it; // para percorrer todos os active states
 						
 					it = activestates.values().iterator();
@@ -255,7 +244,7 @@ public class SimulationManager implements Serializable
 								// remove se for fonte ou destino
 								ia.removeFromQueue(e.id);
 								int i = ia.toQueueIndexOf(e.id);
-								if(i != -1) // se � destino, remove tb a condi��o
+								if(i != -1)
 								{
 									ia.removeToQueue(i);
 									ia.removeCond(i);
@@ -320,7 +309,6 @@ public class SimulationManager implements Serializable
 			
 			synchronized(activestates)
 			{
-				// remove todas as refer�ncias a esse queue
 				Iterator it; // para percorrer todos os active states
 				
 				it = activestates.values().iterator();
@@ -436,7 +424,7 @@ public class SimulationManager implements Serializable
 			{
 				e = (Entry)observers.get(e.obsid);
 			}
-			e.obsid = oe.obsid;		// liga com o pr�ximo
+			e.obsid = oe.obsid;
 			if(oe.getHistid() != null)
 				RemoveHistogram(oe.getHistid());
 		}
@@ -484,9 +472,6 @@ public class SimulationManager implements Serializable
 			}
 		}	
 	}
-	// Remove entrada do reposit�rio respectivo e suas associadas
-	// de forma a manter a consist�ncia
-	
 	/**
 	 * Returns a Queue given its ID
 	 */
@@ -527,8 +512,6 @@ public class SimulationManager implements Serializable
 	 * TypeID is the user-visible, and editable field.
 	 */
 	public AttributeTable GetType(String id)
-	// Este � o �nico caso em que o Id �nico n�o � usado para indexa��o,
-	// e sim o name, que � o campo visto e alterado pelo usu�rio.
 	{
 		AttributeTable e = null;
 		synchronized(types)
@@ -545,12 +528,10 @@ public class SimulationManager implements Serializable
 	}
 	
 	/**
-	 * Obt�m entrada do reposit�rio respectivo atrav�s de seu ID �nico
 	 */
 	public AttributeTable GetGlobals(){return globals;}
 		
 	/**
-	 * Gera modelo de simula��o e prepara para execu��o
 	 */
 	public synchronized boolean GenerateModel()
 	{
@@ -561,8 +542,7 @@ public class SimulationManager implements Serializable
 		
 		s = new Scheduler();
 		
-		// logo depois a stream de n�meros aleat�rios
-		
+
 		sp = new Sample();
 		
 		synchronized(queues){
@@ -570,7 +550,6 @@ public class SimulationManager implements Serializable
 				synchronized(resources){
 					synchronized(observers){
 						synchronized(histograms)
-		// ningu�m pode estar sendo alterado
 		{
 			QueueEntry qe;
 			ActiveEntry ae;
@@ -602,9 +581,7 @@ public class SimulationManager implements Serializable
 				}
 			}
 
-			// da� os ativos
-			
-			// 1.o limpa os objs de simula��o (devido �s InterruptActivity's)
+
 			it = activestates.values().iterator();
 			while(it.hasNext())
 			{
@@ -628,8 +605,7 @@ public class SimulationManager implements Serializable
 			}
 		}
 		
-		// cria, por �ltimo, as vari�veis globais
-		
+
 		Expression.globals = new Variables();
 		
 		QueueEntry qe = null;
@@ -663,13 +639,12 @@ public class SimulationManager implements Serializable
 	}		
 	
 	/**
-	 * Executa simula��o at� instante endTime
 	 */
 	public synchronized boolean ExecuteSimulation(float endTime)
 	{
 		boolean ok = false;
 		
-		if(endTime >= 0 && s != null)	// o modelo j� deve ter sido gerado
+		if(endTime >= 0 && s != null)
 		{
 			Log.Close();
 			Log.OpenFile();
@@ -685,7 +660,6 @@ public class SimulationManager implements Serializable
 	}
 		
 	/**
-	 * Coloca todos os objetos da simula��o em seus estados iniciais
 	 */
 	public synchronized boolean ResetSimulation()
 	{
@@ -717,14 +691,12 @@ public class SimulationManager implements Serializable
 	}
 		
 	/**
-	 * Limpa todos os objetos estat�sticos, mesmo durante a simula��o
-	 * a simula��o deve estar pausada (Stop() suave do scheduler)
 	 */
 	public synchronized boolean ResetStatistics()
 	{
 		if(s == null || running)
-			return false;	// modelo precisa ser gerado antes e  
-										// n�o pode estar executando
+			return false;
+
 		Iterator it;
 		resettime = s.GetClock();
 		
@@ -738,18 +710,16 @@ public class SimulationManager implements Serializable
 	}
 		
 	/**
-	 * Interrompe simula��o
 	 */
 	public synchronized void StopSimulation()
 	{
 		if(running)
-			s.Stop();		// p�ra
+			s.Stop();		//
 				
 		running = false;
 	}
 	
 	/**
-	 * Continua a simula��o, se poss�vel
 	 */
 	public synchronized boolean ResumeSimulation()
 	{
@@ -760,7 +730,6 @@ public class SimulationManager implements Serializable
 	}
 	
 	/**
-	 * Verifica se a simula��o ainda est� executando
 	 */
 	public boolean Finished()
 	{
@@ -771,8 +740,6 @@ public class SimulationManager implements Serializable
 	}
 	
 	/**
-	 * Depois da simula��o terminada, escreve os resultados
-	 * das estat�sticas nos arquivos de sa�da
 	 */
 	public synchronized boolean OutputSimulationResults(String filename)
 	{

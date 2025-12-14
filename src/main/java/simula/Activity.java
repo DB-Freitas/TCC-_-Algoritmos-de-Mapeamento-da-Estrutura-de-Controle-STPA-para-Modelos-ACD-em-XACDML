@@ -1,5 +1,4 @@
 // Arquivo Activity.java
-// Implementa��o das Classes do Grupo de Modelagem da Biblioteca de Simula��o JAVA
 // 9.Abr.1999	Wladimir
 
 package simula;
@@ -12,25 +11,24 @@ public class Activity extends ActiveState
 	/**
 	 * entities_from_v, entities_to_v, conditions_from_v,
 	 * resources_from_v, resources_to_v, resources_qt_v:
-	 * vetores que mant�m as liga��es e par�metros
 	 */
 	protected Vector entities_from_v, entities_to_v, conditions_from_v,
 					 	resources_from_v, resources_to_v, resources_qt_v;
 													
-	private Distribution d;		// gerador de n�meros aleat�rios de uma dada distribui��o
+	private Distribution d;
 
 	/**
-	 * fila de entidades/recursos em servi�o
+	 * fila de entidades
 	 */
 	protected IntPriorityQ service_q;
 		
 	/**
-	 * se est� bloqueado
+	 * se es
 	 */
 	protected boolean blocked;	
 
 	/**
-	 * constr�i um estado ativo sem conex�es ou tempo de servi�o definidos.
+	 * cono de s
 	 */
 	public Activity(Scheduler s)
 	{
@@ -46,8 +44,6 @@ public class Activity extends ActiveState
 	}
 	
 	/**
-	 * determina o tempo de servi�o de acordo com a distribui��o especificada;
-	 * os par�metros da distribui��o s�o passados na cria��o do objeto.
 	 */
 	public void SetServiceTime(Distribution d){this.d = d;}
 	
@@ -55,8 +51,6 @@ public class Activity extends ActiveState
 	{ConnectQueues(from, ConstExpression.TRUE, to);}
 	
 	/**
-	 * conecta estados mortos � atividade de forma que 
-	 * a(s) entidade(s) (recurso(s)) n�o se misturem.
 	 */
 	public void ConnectResources(ResourceQ from, ResourceQ to, int qty_needed)
 	{
@@ -66,9 +60,7 @@ public class Activity extends ActiveState
 	}
 	
 	/**
-	 * conecta estados mortos � atividade de forma que 
-	 * a(s) entidade(s) (recurso(s)) n�o se misturem.
-	 * mas a entidade � obtida de from somente se cond � satisfeita
+	 * conecta estados moresfeita
 	 */
 	public void ConnectQueues(DeadState from, Expression cond, DeadState to)
 	{
@@ -78,7 +70,6 @@ public class Activity extends ActiveState
 	}
 	
 	/**
-	 * Coloca objeto em seu estado inicial para simula��o
 	 */
 	public void Clear()
 	{
@@ -91,28 +82,27 @@ public class Activity extends ActiveState
 	 */
 	public boolean BServed(float time)
 	{
-		if(blocked)									// n�o faz nada enquanto estiver bloqueado
+		if(blocked)									// quanto estiver bloqueado
 			return false;
 			
 		IntQEntry e = service_q.Dequeue();
 
-		if(e == null)								// n�o h� mais nada a servir
+		if(e == null)								// a a servir
 			return false;
 
-		if(time < e.duetime)				// servi�o foi interrompido e scheduler 
-		{														// n�o foi notificado
-			service_q.PutBack(e);				// devolve � fila para ser servido mais tarde
+		if(time < e.duetime)				// serompido e scheduler
+		{														// no
+			service_q.PutBack(e);				// devolser servido mais tarde
 			return false;
 		}
 
-		// fim de servi�o!
-		
+
 		boolean shouldnotblock = true;
 
 		for(int i = 0; i < entities_to_v.size(); i++)		// as entidades...
 		{
-			DeadState q = (DeadState)entities_to_v.elementAt(i);	// obt�m fila associada
-			shouldnotblock &= q.HasSpace();												// condi��o para n�o bloquear
+			DeadState q = (DeadState)entities_to_v.elementAt(i);	// osociada
+			shouldnotblock &= q.HasSpace();												// condibloquear
 		}
 		
 		if(!shouldnotblock)
@@ -125,15 +115,15 @@ public class Activity extends ActiveState
 
 		for(int i = 0; i < entities_to_v.size(); i++)		// as entidades...
 		{
-			DeadState q = (DeadState)entities_to_v.elementAt(i);	// obt�m fila associada
-			if(q.HasSpace())										// se tem espa�o
+			DeadState q = (DeadState)entities_to_v.elementAt(i);	// oa associada
+			if(q.HasSpace())										// se tem e
 				q.Enqueue(e.ve[i]);									// envia ao estado morto
 		}
 		
 		for(int i = 0; i < resources_to_v.size(); i++)		// e os recursos.
 		{
 			int qt;
-			ResourceQ q = (ResourceQ)resources_to_v.elementAt(i);	// obt�m fila associada
+			ResourceQ q = (ResourceQ)resources_to_v.elementAt(i);	// associada
 			q.Release(qt = ((Integer)resources_qt_v.elementAt(i)).intValue());// envia ao estado morto
 			Log.LogMessage(name + ":Released " + qt + " resources to " +
 				((ResourceQ)resources_to_v.elementAt(i)).name);
@@ -165,13 +155,13 @@ public class Activity extends ActiveState
 			blocked = false;
 			while(BServed(s.GetClock()));	// extrai todos os bloqueados
 							
-			if(blocked)		// se ainda estiver bloqueado, n�o faz nada
+			if(blocked)		// se ainda estiver bloqueadoa
 				return false;
 			Log.LogMessage(name + ":Unblocked");
 		}
 			
 		
-		// primeiro verifica se todos os recursos e entidades est�o dispon�veis
+		// primeiro verifica se todos os recursos e entidades
 		boolean ok = true;
 		int esize = entities_from_v.size();
 		int i;
@@ -185,26 +175,25 @@ public class Activity extends ActiveState
 
 		IntQEntry possible = new IntQEntry(esize, (float)d.Draw());
 		Entity e;
-		for(i = 0; i < esize && ok; i++)					// as condi��es.
+		for(i = 0; i < esize && ok; i++)					// as co
 		{
 			possible.ve[i] = e = ((DeadState)entities_from_v.elementAt(i)).Dequeue();
 																// retira entidades...
 			ok &= ((Expression)conditions_from_v.elementAt(i)).Evaluate(e) != 0;
-																// e testa condi��o
+																// e testa co
 		}
 
 		if(!ok)
 		{
-			if(i > 0)		// alguma condi��o n�o foi satisfeita
+			if(i > 0)		// alguma con satisfeita
 			{
-				for(i--; i >= 0; i--)		// devolve as entidades �s respectivas filas
+				for(i--; i >= 0; i--)		// devolve as entidativas filas
 					((DeadState)entities_from_v.elementAt(i)).PutBack(possible.ve[i]);
 			}
 
 			return false;
 		}
 
-		// obt�m os recursos
 
 		for(i = 0; i < resources_from_v.size(); i++)
 		{
@@ -217,7 +206,7 @@ public class Activity extends ActiveState
 		}
 
 		possible.duetime = RegisterEvent(possible.duetime);		// notifica scheduler
-		service_q.Enqueue(possible);							// coloca na fila de servi�o
+		service_q.Enqueue(possible);							// coloca na fila d
 		
 		if(obs != null)
 		{

@@ -1,5 +1,4 @@
 // Arquivo  InterruptActiveEntry.java 
-// Implementa��o das Classes do Sistema de Gerenciamento da Simula��o
 // 21.Mai.1999 Wladimir
 
 package simula.manager;
@@ -34,7 +33,6 @@ public class InterruptActiveEntry extends InternalActiveEntry
 	return stb.toString();
   }
   /**
-   * constr�i um objeto com id gerado internamente.
    */
   public InterruptActiveEntry()
   {
@@ -57,7 +55,6 @@ public class InterruptActiveEntry extends InternalActiveEntry
 	}
 
   /**
-   * Ajusta os par�metros referentes aos Router's e Activity's
    */
   protected boolean Setup(SimulationManager m)
   {
@@ -85,7 +82,6 @@ public class InterruptActiveEntry extends InternalActiveEntry
   
   /**
    * chama trimToSize() para cada Vector interno
-   * para economizar mem�ria alocada
    */
   public void TrimVectors()
 	{

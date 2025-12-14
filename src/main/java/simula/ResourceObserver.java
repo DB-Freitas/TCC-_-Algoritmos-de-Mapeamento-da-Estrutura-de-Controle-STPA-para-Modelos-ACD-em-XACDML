@@ -1,5 +1,4 @@
 // Arquivo ResourceObserver.java
-// Implementação das Classes do Grupo de Resultados da Biblioteca de Simulação JAVA
 // 16.Abr.1999	Wladimir
 
 package simula;
@@ -14,13 +13,12 @@ public class ResourceObserver extends Observer
 	{ super(s, st); this.q = q; q.SetObserver(this);}
 
 	/**
-	 * faz estatística da quantidade de recursos ociosos.
 	 */
 	public void StateChange(short to)
 	{
 		float clock = s.GetClock();
 
-		if(previousobservation == clock)	// já observou neste instante
+		if(previousobservation == clock)	// jï¿½ observou neste instante
 			return;
 		
 		stat.Add(clock - previousobservation, q.ObsLength());
@@ -28,11 +26,9 @@ public class ResourceObserver extends Observer
 	}
 
 	/**
-	 * desnecessário para esse caso.
 	 */
 	public void Incoming(Entity e){}
 	/**
-	 * desnecessário para esse caso.
 	 */
 	public void Outgoing(Entity e){}
 }

@@ -1,5 +1,4 @@
 // Arquivo Scheduler.java
-// Implementa��o das Classes do Grupo Executivo da Biblioteca de Simula��o JAVA
 // 19.Mar.1999	Wladimir
 
 package simula;
@@ -9,23 +8,23 @@ import java.util.Vector;
 public class Scheduler implements Runnable
 {
 	private Calendar calendar;		// estrutura de armazenamento dos estados ativos a servir
-	private float clock = 0;		// rel�gio da simula��o
-	private float endclock;			// fim da simula��o
-	private float timeprecision;	// diferen�a m�nima que deve haver entre dois instantes
+	private float clock = 0;		// r
+	private float endclock;			// fim da sim
+	private float timeprecision;	// difeve haver entre dois instantes
 									// para que sejam considerados diferentes 
-	private Vector activestates;	// Vetor dos estados ativos da simula��o
-	private boolean crescan = true;	// flag de habilita��o de re-varrudura dos eventos C
+	private Vector activestates;	// Vetor dos estados ativos da
+	private boolean crescan = true;	// flag de habiura dos eventos C
 	private volatile boolean running = false;
-									// controla se a simula��o deve continuar rodando
-	private boolean stopped = false;// indica se a simula��o parou conforme ordenado
-	private Thread simulation;		// thread em que a simula��o ir� executar
-	private byte termreason;		// porque encerrou a simula��o
+									// controla se a siinuar rodando
+	private boolean stopped = false;// indica se a simulforme ordenado
+	private Thread simulation;		// thread em que a simr
+	private byte termreason;		// porque encerrou a
 	
-	private static Scheduler s;		// uma refer�ncia est�tica ao Scheduler
-									// para permitir a��es de emerg�ncia (parada)
+	private static Scheduler s;		// uma refa ao Scheduler
+									// para permiarada)
 
 	/**
-	 * retorna refer�ncia ao objeto ativo
+	 * retorna
 	 */
 	public static Scheduler Get(){return s;}
 
@@ -38,7 +37,7 @@ public class Scheduler implements Runnable
 	}
 	
 	/**
-	 * Coloca objeto em seu estado inicial para simula��o
+	 * Coloca objeto em seu estado inicial para
 	 * Apaga todos os eventos agendados. Deve ser chamado ANTES
 	 * de todos os Clear() dos Active/DeadState
 	 */
@@ -46,8 +45,8 @@ public class Scheduler implements Runnable
 	{
 		if(running)
 			return;
-		simulation = null;	// impede continua��o
-		clock = 0;					// reinicia rel�gio
+		simulation = null;	// impede contin
+		clock = 0;					// reinicia r
 		stopped = false;
 		termreason = 0;
 		calendar = new Calendar();
@@ -79,21 +78,21 @@ public class Scheduler implements Runnable
 	}
 
 	/**
-	 * retorna true se a simula��o terminou
+	 * retorna true se ou
 	 */
 	public boolean Finished(){return stopped;}
 	
 	/**
-	 * Inicia execu�ao da simulacao numa thread separada
+	 * Inicia  thread separada
 	 */
 	public synchronized boolean Run(double endtime)
 	{
-		if(endtime < 0.0)				// rel�gio n�o pode ser negativo
-			return false;				// se for 0.0 executa at� acabarem as entidades
+		if(endtime < 0.0)				// rele ser negativo
+			return false;				// se forem as entidades
 
 		if(!running)
 		{
-			if(activestates.isEmpty())	// se n�o h� nenhum estado ativo registrado, 
+			if(activestates.isEmpty())	// se  ativo registrado,
 				return false;			// como executar?
 			activestates.trimToSize();
 			running = true;
@@ -103,7 +102,7 @@ public class Scheduler implements Runnable
 			termreason = 0;
 			simulation = new Thread(this);
 			simulation.setPriority(Thread.MAX_PRIORITY);
-			simulation.start();			// inicia execu��o
+			simulation.start();			// inicia exe
 			Log.LogMessage("Scheduler: simulation started");
 
 			return true;
@@ -113,40 +112,40 @@ public class Scheduler implements Runnable
 	}
 	
 	/**
-	 * P�ra a simulacao
+	 *
 	 */
 	public synchronized void Stop()
 	{
-		if(stopped)						// se j� parou
+		if(stopped)						// s
 			return;
 		
 		stopped = false;
 		running = false;				// encerramento suave
 		try
 		{
-			simulation.join(5000);		// espera at� 5 segundos
+			simulation.join(5000);		// espera aos
 		}
 		catch(InterruptedException e)
 		{
 			stopped = true;
-			simulation = null;	// n�o pode continuar
-			termreason = 4;			// parada dr�stica
+			simulation = null;	// n
+			termreason = 4;			// para
 			Log.LogMessage("Scheduler: simulation stopped drastically");
 			Log.Close();
-			return;							// j� parou mesmo...
+			return;							// jo...
 		}
 		
 		termreason = 3;			// parada suave bem sucedida
 			
-		if(!stopped)					// se ainda n�o parou...
+		if(!stopped)					// se ain..
 		{
 			try
 			{
-				simulation.interrupt();		// p�ra de forma dr�stica
+				simulation.interrupt();		// �stica
 			}
 			catch(SecurityException e){}
 			
-			simulation = null;	// n�o pode continuar
+			simulation = null;	// nuar
 			termreason = 4;
 			Log.LogMessage("Scheduler: simulation stopped drastically");
 			Log.Close();
@@ -157,7 +156,7 @@ public class Scheduler implements Runnable
 	}
 	
 	/**
-	 * Continua a execu��o de uma simula��o parada por Stop()
+	 * Continua Stop()
 	 */
 	public synchronized boolean Resume()
 	{
@@ -174,7 +173,7 @@ public class Scheduler implements Runnable
 	}
 	
 	/**
-	 * Seta o m�nimo intervalo entre dois instantes para que sejam considerados o mesmo.
+	 * Seta o mo.
 	 */
 	public void SetPrecision(double timeprec)
 	{ 
@@ -183,24 +182,24 @@ public class Scheduler implements Runnable
 	}
 
 	/**
-	 * retorna rel�gio da simula��o.
+	 * retorna rel�gio da
 	 */
 	public float GetClock(){return clock;}
 
 	/**
-	 * C�digo que roda a simulacao. (rodado numa Thread separada)
+	 * oda a simulacao. (rodado numa Thread separada)
 	 */
 	public void run()
 	{
 		while(running)
 		{
-			// atualiza rel�gio da simula��o
+			// atualiza rel�gio da simu
 
 			clock = calendar.GetNextClock();
 			
 //			Log.LogMessage("Scheduler: clock advanced to " + clock);
 			Log.LogMessage("Scheduler: clock advanced to " + Math.round(clock));
-			// verifica se simula��o chegou ao fim
+			// verifica se siim
 
 			if(clock == 0.0)			// fim das entidades
 			{
@@ -232,8 +231,8 @@ public class Scheduler implements Runnable
 				executed |= a.BServed(clock);	// se ao menos um executou, fica registrado
 			}while(calendar.RemoveNext());
 
-			if(!executed)				// se n�o havia nada a ser executado nesse instante
-				continue;				// pula para o pr�ximo sem executar a fase C.
+			if(!executed)				// se ada a ser executado nesse instante
+				continue;				// pula para o executar a fase C.
 										// (as atividades podem ter alterado o tempo localmente)
 						
 			// Fase C

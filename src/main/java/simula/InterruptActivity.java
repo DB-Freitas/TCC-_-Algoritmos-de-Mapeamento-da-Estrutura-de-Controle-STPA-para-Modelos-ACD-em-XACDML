@@ -1,5 +1,4 @@
 // Arquivo InterruptActivity.java
-// Implementa��o das Classes do Grupo de Modelagem da Biblioteca de Simula��o JAVA
 // 22.Abr.1999	Wladimir
 
 package simula;
@@ -11,7 +10,6 @@ public class InterruptActivity extends Activity
 	private Vector IntVector;
 	
 	/**
-	 * constr�i uma atividade que interrompe e pode ser interrompida
 	 */
 	public InterruptActivity(Scheduler s)
 	{
@@ -20,22 +18,18 @@ public class InterruptActivity extends Activity
 	}
 	
 	/**
-	 * adiciona a � lista das atividades que podem ser interrompidas
-	 * quando se fizer necess�rio (obter recurso)
 	 */
 	public void AddInterruptable(InterruptActivity a){IntVector.add(a);}
 
 	/**
-	 * interrompe servi�o dessa atividade em favor de a;
-	 * se interrompeu, retorn true, sen�o false
 	 */
 	public boolean Interrupt(InterruptActivity a)
 	{
-		IntQEntry e = service_q.FromTail(); // interrompe o servi�o mais demorado
+		IntQEntry e = service_q.FromTail(); // i demorado
 		if(e == null)
-			return false;	// n�o tinha servi�o para interromper
+			return false;	// n seterromper
 			
-		for(int i = 0; i < e.ve.length; i++)		// devolve as entidades �s respectivas filas
+		for(int i = 0; i < e.ve.length; i++)		// devolve astivas filas
 			((DeadState)entities_from_v.elementAt(i)).PutBack(e.ve[i]);
 		
 		for(int i = 0; i < resources_from_v.size(); i++)	// e os recursos
@@ -52,10 +46,10 @@ public class InterruptActivity extends Activity
 	 */
 	public boolean CServed()
 	{
-		if(super.CServed())	// se o servi�o normal foi poss�vel...
+		if(super.CServed())	// se o ..
 			return true;
 			
-		if(blocked)					// n�o vai interromper ningu�m se estiver bloquado
+		if(blocked)					// n bloquado
 			return false;
 			
 		int esize = entities_from_v.size();
@@ -66,15 +60,14 @@ public class InterruptActivity extends Activity
 		if(!ok)
 			return false;
 
-		// se n�o foi, tenta interromper algu�m, mas s� se realmente houver entidades
-		// suficientes para se iniciar o servi�o.
+
 		
 			
 		boolean interrupted = false;
 		for(int i = 0; i < IntVector.size() && !interrupted; i++)
 			if(((InterruptActivity)IntVector.elementAt(i)).Interrupt(this))
-				interrupted = super.CServed(); 	// se conseguiu interromper e fazer o servi�o
-																				// sen�o tenta novamente
+				interrupted = super.CServed(); 	// se conseguiu interromper
+																				// seovamente
 	
 		return interrupted;			// avisa scheduler o que ocorreu
 	}

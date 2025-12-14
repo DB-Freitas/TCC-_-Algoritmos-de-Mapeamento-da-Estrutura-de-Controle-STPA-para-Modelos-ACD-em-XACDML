@@ -1,5 +1,4 @@
 // Arquivo StackQ.java
-// Implementa��o das Classes do Grupo de Modelagem da Biblioteca de Simula��o JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
@@ -12,7 +11,6 @@ public class StackQ extends DeadState
 	private Stack q;					// implementa fila como vetor
 
 	/**
-	 * constr�i uma fila vazia com capacidade para max entidades.
 	 */
 	public StackQ(Scheduler s, short max)
 	{
@@ -22,7 +20,6 @@ public class StackQ extends DeadState
 	} 
 	
 	/**
-	 * constr�i uma fila vazia com capacidade ilimitada. 
 	 */
 	public StackQ(Scheduler s)
 	{
@@ -32,7 +29,6 @@ public class StackQ extends DeadState
 	}
 	
 	/**
-	 * Coloca objeto em seu estado inicial para simula��o
 	 */
 	public void Clear()
 	{
@@ -41,7 +37,6 @@ public class StackQ extends DeadState
 	}
 
 	/**
-	 * implementa a interface segundo a pol�tica FIFO; atualiza atributos de tamanho.
 	 */
 	public void Enqueue(Entity e)
 	{
@@ -53,7 +48,6 @@ public class StackQ extends DeadState
 	}
 	
 	/**
-	 * implementa a interface segundo a pol�tica FIFO; atualiza atributos de tamanho.
 	 */
 	public void PutBack(Entity e)
 	{	
@@ -64,7 +58,6 @@ public class StackQ extends DeadState
 		e.EnteredQueue(s.GetClock());
 	}
 	/**
-	 * implementa a interface segundo a pol�tica FIFO; atualiza atributos de tamanho.
 	 */
 	public Entity Dequeue()
 	{

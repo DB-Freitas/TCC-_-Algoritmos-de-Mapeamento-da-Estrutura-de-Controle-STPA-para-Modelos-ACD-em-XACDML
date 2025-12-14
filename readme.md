@@ -86,10 +86,22 @@ Ele é 100% gerado a partir do modelo XACDML, garantindo reprodutibilidade e evi
 
 ## Execução do modelo de simulação e resultados
 
-Para executar o modelo de simulação basta executar o arquivo ".java" gerado. Após sua execução será gerado o arquivo: 
+Para executar o modelo de simulação primeiramente movemos o arquivo gerado "SCSI.java" para o diretório (no mesmo projeto) 
+> .../src/main/java 
+
+Após isso para compilar o arquivo, iremos até o diretório acima e usamos o comando: 
+> javac SCSI.java
+
+Para verificar se a compilação ocorreu sem problemas podemos verificar se o arquivo SCSI.class foi gerado e está presente no diretório com o comando:
+> ls 
+
+E finalmente para executar o modelo de simulação usamos o comando: 
+> java SCSI
+
+Os resultados serão gerados e salvos no mesmo diretório, no arquivo: 
 > SCSI.out
 
-Que será onde os resultados do modelo serão apresentados, através desses resultados podemos demonstrar que o simulador executa corretamente o fluxo associado às activities, queues, control actions e feedback produzidos pelo mapeamento.
+Através desses resultados podemos demonstrar que o simulador executa corretamente o fluxo associado às activities, queues, control actions e feedback produzidos pelo mapeamento.
 
 ![Recorte da folha de resultados](imagens/recortedafolhaderesultados.png)
 

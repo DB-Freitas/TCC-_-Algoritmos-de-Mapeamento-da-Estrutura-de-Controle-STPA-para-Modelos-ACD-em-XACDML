@@ -18,6 +18,6 @@ public class TString
 	
 	public static void main(String[] args)
 	{
-		System.out.println(replace("o Tony é muito feio, feio que dói! feio", "feio", "bonito"));
+		System.out.println(replace("o Tony e muito feio, feio que doi! feio", "feio", "bonito"));
 	}
 }

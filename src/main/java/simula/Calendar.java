@@ -1,5 +1,4 @@
 // Arquivo Calendar.java
-// Implementação das Classes do Grupo Executivo da Biblioteca de Simulação JAVA
 // 19.Mar.1999	Wladimir
 
 package simula;
@@ -9,7 +8,7 @@ package simula;
  */
 class Calendar
 {
-	private TTreeEntry root = null;	// raiz da árvore
+	private TTreeEntry root = null;
 	private TTreeEntry list = null;	// lista dos estados ativos correntes
 
 	public Calendar(){}
@@ -18,7 +17,7 @@ class Calendar
 	 */
 	public void Add(ActiveState a, double duetime)
 	{
-		if(root == null)	// se é a primeira inserção
+		if(root == null)
 			root = new TTreeEntry(a, duetime);
 		else
 		{
@@ -78,15 +77,15 @@ class Calendar
 	 */
 	public boolean Remove(ActiveState a, double duetime)
 	{
-		if(root == null)	// se árvore vazia...
+		if(root == null)	// se ï¿½rvore vazia...
 			return false;
 
 		TTreeEntry e = Find(a, duetime);
 
-		if(e == null)		// se não encontrou
+		if(e == null)		// se nï¿½o encontrou
 			return false;
 
-		// remove da lista ligada ao nó
+
 
 		TTreeEntry x, y;
 
@@ -99,7 +98,7 @@ class Calendar
 			{
 				// nothing else in the list 
 				(e.right).middle = null;
-				e.right = e.middle = e.left = e.parent = null;	// zera referências
+				e.right = e.middle = e.left = e.parent = null;	//
 				return true;
 			}
 			else if (e.right != null)
@@ -111,7 +110,7 @@ class Calendar
 		
 			(e.parent).middle = x;
 			x.parent = e.parent;
-			e.right = e.middle = e.left = e.parent = null;	// zera referências
+			e.right = e.middle = e.left = e.parent = null;	// zera r
 
 			return true;
 		}
@@ -210,11 +209,6 @@ class Calendar
 		return true;
 	}
 
-	/**
-	 * encontra posição na árvore
-	 * não precisa se preocupar em procurar na lista porque ela só contém 
-	 * os eventos que serão executados neste instante
-	 */
 	private TTreeEntry Find(ActiveState a, double duetime)
 	{
 
@@ -229,19 +223,18 @@ class Calendar
 			else if((float)duetime == e.time)
 				break;			
 			else
-				return null;	// não está na árvore
+				return null;
 		}
 		if(a == e.a)			// achou!
 			return e;
 		if(a != e.a && e.middle == null)
-			return null;		// tempo certo mas estado ativo não está presente
+			return null;
 		
-		// procura posição na lista do nó
 		TTreeEntry endflag = e.middle.parent;
 		while(a != e.a)
 		{
-			if(e == endflag)	// se sou o último e ainda não encontrei
-				return null;	// não existe na árvore
+			if(e == endflag)
+				return null;
 			e = e.middle;	
 		}
 
@@ -250,18 +243,18 @@ class Calendar
 
 	public ActiveState GetNext()
 	{
-		if(list == null)		// se o relógio ainda não avançou
-			return null;		// não retorna nenhum estado ativo
+		if(list == null)		//
+			return null;		//
 		
 		return list.a;
   
 	}
 	public float GetNextClock()
 	{
-		// se este é o primeiro evento após o avanço do relógio
+		// s
 		if(list == null)
 		{
-			if(root == null)		// se já removeu todas as entidades...
+			if(root == null)
 			{
 				list = null;
 				return (float)0.0;
@@ -272,14 +265,12 @@ class Calendar
 			child = root;
 			parent = null;
 
-			// encontra nó com menor duetime
-			while (child.left != null) 
+			while (child.left != null)
 			{
 				parent = child;
 				child  = child.left;
 			}
 	
-			// remodela árvore
 			if (child == root)
 				root = child.right;
 			else 
@@ -299,9 +290,8 @@ class Calendar
 				child.middle.right = null;			// idem
 			}
 			child.right = null;					// idem
-			child.parent = null;				// desconecta da árvore
+			child.parent = null;				// desconecta da ï¿½rvore
 
-			// obtém a lista com os estados ativos a serem servidos neste tempo
 			list = child;
 		}
 
@@ -309,13 +299,13 @@ class Calendar
 	}
 	public boolean RemoveNext()
 	{
-		if(list == null) return false;	// não cria lista, apenas remove dela
+		if(list == null) return false;	//enas remove dela
 	
-		if(list.middle != null)			// se não é último...
+		if(list.middle != null)			// se
 		{
 			list = list.middle;
 			
-			// limpa referências 
+			// limpa referï¿½ncias 
 			list.parent.middle = null;
 			list.parent.left = null;
 			list.parent = null;			// desconecta da lista

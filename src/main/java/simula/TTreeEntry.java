@@ -1,11 +1,9 @@
 // Arquivo TTreeEntry.java
-// Implementação das Classes do Grupo Executivo da Biblioteca de Simulação JAVA
 // 19.Mar.1999	Wladimir
 
 package simula;
 
 /**
- * Classe que implementa um nó de uma árvore
  */
 class TTreeEntry
 {

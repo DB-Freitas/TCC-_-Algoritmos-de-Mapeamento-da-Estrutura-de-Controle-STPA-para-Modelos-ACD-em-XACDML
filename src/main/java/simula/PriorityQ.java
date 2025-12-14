@@ -1,5 +1,4 @@
 // Arquivo PriorityQ.java
-// Implementa��o das Classes do Grupo de Modelagem da Biblioteca de Simula��o JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
@@ -15,7 +14,6 @@ public class PriorityQ extends DeadState
 	private Vector q;					// implementa fila como vetor
 
 	/**
-	 * constr�i uma fila vazia com capacidade para max entidades. 
 	 */
 	public PriorityQ(Scheduler s, int max)
 	{
@@ -24,7 +22,6 @@ public class PriorityQ extends DeadState
 	} 
 	
 	/**
-	 * constr�i uma fila vazia com capacidade ilimitada. 
 	 */
 	public PriorityQ(Scheduler s)
 	{
@@ -33,7 +30,6 @@ public class PriorityQ extends DeadState
 	}
 	
 	/**
-	 * Coloca objeto em seu estado inicial para simula��o
 	 */
 	public void Clear()
 	{
@@ -42,7 +38,6 @@ public class PriorityQ extends DeadState
 	}
 	
 	/**
-	 * implementa a interface segundo a pol�tica priority FIFO; atualiza atributos de tamanho.
 	 */
 	public void Enqueue(Entity e)
 	{
@@ -51,8 +46,6 @@ public class PriorityQ extends DeadState
 		e.EnteredQueue(s.GetClock());
 		int min, max, cur;	// max pode ser negativo (qdo for inserir no come�o)
 		Entity e2;
-		// encontra posi��o de inser��o baseado na prioridade da Entity e.
-		// implementa busca bin�ria, j� que os elementos es�o ordenados por prioridade.
 		min = 0;
 		max = q.size() - 1;
 		cur = 0;
@@ -62,15 +55,15 @@ public class PriorityQ extends DeadState
 			e2 = (Entity)q.elementAt(cur);
 			if(e.GetPriority() < e2.GetPriority())
 				max = cur - 1;
-			else if(e.GetPriority() >= e2.GetPriority())	// ap�s os de mesma prioridade 
-				min = ++cur;								// que j� est�o na fila
+			else if(e.GetPriority() >= e2.GetPriority())	// dade
+				min = ++cur;								//
 		}
-		// cur cont�m a posi��o de inser��o
+		// cur co
 		q.insertElementAt(e, cur);
 		count++;
 	}
 	/**
-	 * implementa a interface segundo a pol�tica priority FIFO; atualiza atributos de tamanho.
+	 * implementa a interface sde tamanho.
 	 */
 	public void PutBack(Entity e)
 	{	
@@ -81,7 +74,7 @@ public class PriorityQ extends DeadState
 		count++;
 	}
 	/**
-	 * implementa a interface segundo a pol�tica priority FIFO; atualiza atributos de tamanho.
+	 * implementa a interface seutos de tamanho.
 	 */
 	public Entity Dequeue()
 	{

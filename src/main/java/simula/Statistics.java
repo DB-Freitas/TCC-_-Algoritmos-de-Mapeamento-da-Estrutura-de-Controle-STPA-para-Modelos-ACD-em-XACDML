@@ -1,14 +1,11 @@
 // Arquivo Statistics.java
-// Implementação das Classes do Grupo de Resultados da Biblioteca de Simulação JAVA
 // 16.Abr.1999	Wladimir
 
-// Código original em C adaptado de 
 // Watkins, Kevin. Discrete event simulation in C. 1993. McGraw-Hill International.
 
 package simula;
 
 /**
- * Código original em C adaptado de 
  * Watkins, Kevin. Discrete event simulation in C. 1993. McGraw-Hill International.
  */
 public class Statistics
@@ -30,7 +27,6 @@ public class Statistics
 	}
 
 	/**
-	 * limpa estatísticas
 	 */
 	public void Clear()
 	{
@@ -43,12 +39,10 @@ public class Statistics
 	}
 
 	/**
-	 * adiciona mais um dado às estatísticas com peso unitário
 	 */
 	public void Add(float  v){Add(1, v);}
 
 	/**
-	 * adiciona mais um dado às estatísticas com peso weight
 	 */
 	public void Add(float weight, float  v)
 	{
@@ -64,17 +58,14 @@ public class Statistics
 	}
 
 	/**
-	 * calcula a média.
 	 */
 	public final float Mean(){return sum_xf / sum_f;}
 
 	/**
-	 * calcula o desvio padrão; retorna 0 se não houverem dados suficientes.
 	 */
 	public final float StdDev(){return (float)Math.sqrt(Variance());}
 
 	/**
-	 * calcula a variância; retorna 0 se não houverem dados suficientes.
 	 */
 	public final float Variance()
 	{	
@@ -84,17 +75,14 @@ public class Statistics
 	}
 	
 	/**
-	 * retorna máximo valor observado.
 	 */
 	public final float Max(){return max_val;}
 	
 	/**
-	 * retorna mínimo valor observado.
 	 */
 	public final float Min(){return min_val;}
 	
 	/**
-	 * retorna o número de observações
 	 */
 	public final int NumObs(){return sum_f;}
 }

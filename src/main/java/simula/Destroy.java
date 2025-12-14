@@ -1,5 +1,4 @@
 // Arquivo Destroy.java
-// Implementação das Classes do Grupo de Modelagem da Biblioteca de Simulação JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
@@ -11,23 +10,18 @@ package simula;
 public class Destroy extends ActiveState
 {
 	/**
-	 * referência da fila conectada
 	 */
 	protected DeadState from_q;		
 	
 	/**
-	 * número de entidades destruídas
 	 */
 	public int Destroyed = 0;		
 
 	/**
-	 * constrói um estado ativo sem conexões ou tempo de serviço definidos.
 	 */
 	public Destroy(Scheduler s){super(s);}
 
 	/**
-	 * determina origem das entidades destruídas.
-	 * @param	from	the queue to connect from
 	 */
 	public void ConnectQueue(DeadState from)
 	{
@@ -36,7 +30,6 @@ public class Destroy extends ActiveState
 	}
 
 	/**
-	 * Coloca objeto em seu estado inicial para simulação
 	 */
 	public void Clear()
 	{
@@ -50,16 +43,14 @@ public class Destroy extends ActiveState
 	public boolean BServed(float time){return false;}
 
 	/**
-	 * consome entidades disponíveis na fila e realiza estatísticas (quando aplicável).
 	 */
 	public boolean CServed()
 	{
 		boolean got = false;
 
-		while(from_q.HasEnough())			// enquanto tiver entidades a serem destruídas
+		while(from_q.HasEnough())			// enquanto tiver entidades a ss
 		{
 			Entity e = from_q.Dequeue();	// retira entidade
-			// faz estatísticas
 			if(obs != null)
 				obs.Incoming(e);
 			got = true;

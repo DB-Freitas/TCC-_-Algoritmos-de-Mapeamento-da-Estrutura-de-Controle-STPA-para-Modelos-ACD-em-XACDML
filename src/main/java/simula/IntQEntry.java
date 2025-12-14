@@ -1,5 +1,4 @@
 // Arquivo IntQEntry.java
-// Implementação das Classes do Grupo de Modelagem da Biblioteca de Simulação JAVA
 // 9.Abr.1999	Wladimir
 
 package simula;
@@ -7,11 +6,9 @@ package simula;
 class IntQEntry
 {
 	/**
-	 * vetor de entidades em serviço
 	 */
 	public Entity ve[];				
 	/**
-	 * instante de fim de serviço
 	 */
 	public float duetime;		
 

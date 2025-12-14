@@ -1,5 +1,4 @@
 // Arquivo Generate.java
-// Implementação das Classes do Grupo de Modelagem da Biblioteca de Simulação JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
@@ -10,7 +9,6 @@ package simula;
 public class Generate extends ActiveState
 {
 	/**
-	 * referência da fila conectada
 	 */
 	protected DeadState to_q;		
 	/**
@@ -18,8 +16,6 @@ public class Generate extends ActiveState
 	 */
 	protected boolean inservice;
 	/**
-	 * gerador de números aleatórios
-	 * de uma dada distribuição
 	 */
 	protected Distribution d;		
 
@@ -33,16 +29,13 @@ public class Generate extends ActiveState
 	 */
 	protected String[] attids;		
 	/**
-	 * número de entidades geradas
 	 */
 	public int Generated = 0;	
 	/**
-	 * número de entidades perdidas
 	 */
 	public int Wasted = 0;			
 
 	/**
-	 * constrói um estado ativo sem conexões ou tempo de serviço definidos.
 	 */
 	public Generate(Scheduler s){super(s);}
 	
@@ -56,9 +49,7 @@ public class Generate extends ActiveState
 	}
 	
 	/**
-	 * determina o tempo de serviço de acordo com a distribuição especificada;
-	 * os parâmetros da distribuição são passados na criação do objeto 
-	 * e registra primeiro evento de chegada.
+
 	 */
 	public void SetServiceTime(Distribution d)
 	{
@@ -68,7 +59,6 @@ public class Generate extends ActiveState
 	}
 
 	/**
-	 * Coloca objeto em seu estado inicial para simulação
 	 */
 	public void Clear()
 	{
@@ -80,15 +70,13 @@ public class Generate extends ActiveState
 	}
 	
 	/**
-	 * atribui vetores de atributos que contêm ids e valores
-	 * iniciais dos atributos de cada entidade gerada por 
-	 * uma instância deste estado ativo. 
+	 * iniciais dos atributos de cada entidade gerada por
 	 */
 	public void SetEntitiesAtts(String[] ids, float[] values)
 	{
 		if(ids.length != values.length)
 			throw new IllegalArgumentException
-				("Vetores de ids e valores devem ter o mesmo número de elementos");
+				("Vetores de ids e valores devem ter o mesmo nï¿½mero de elementos");
 		attids = ids;
 		attvals = values;
 	}
@@ -98,9 +86,9 @@ public class Generate extends ActiveState
 	 */
 	public boolean BServed(float time)
 	{
-		Entity e = new Entity(time);	// cria entidade e atribui-lhe instante de criação
+		Entity e = new Entity(time);	// cria entidade e atribui-lhe instant
 		
-		// atribui atributos específicos a e
+		// atribui atributos especï¿½ficos a e
 
 		if(attids != null)
 		{
@@ -108,7 +96,7 @@ public class Generate extends ActiveState
 				e.SetAttribute(attids[i], attvals[i]);	
 		}		
 		
-		if(to_q.HasSpace())				// se tem espaço para entidade na fila
+		if(to_q.HasSpace())				// se teentidade na fila
 		{
 			to_q.Enqueue(e);
 			Log.LogMessage(name + ":Entity " + e.GetId() + 
@@ -118,14 +106,14 @@ public class Generate extends ActiveState
 		}
 		else
 		{
-			Wasted++;					// mais uma entidade desperdiçada
+			Wasted++;					// mais uma entidade despe
 			Log.LogMessage(name + ":Entity " + e.GetId() +
 				" generated but wasted");
 		}
 		
 		Generated++;					// mais uma entidade gerada
 
-		inservice = false;				// libera a geração de novas entidades
+		inservice = false;				// libera a s entidades
 		if(obs != null)
 			obs.StateChange(Observer.BUSY);// marca fim do idle-time => determina inter-arrival
 
@@ -133,18 +121,18 @@ public class Generate extends ActiveState
 	}
 
 	/**
-	 * implementa protocolo; agenda evento B se não está "gerando" outra entidade.
-	 * sempre retorna false pois não tem efeito no instante de simulação atual.
+	 * implementa protocolo; agenda evento entidade.
+	 * sempre retorna false po.
 	 */
 	public boolean CServed()
 	{
-		if(!inservice)					// se não está "gerando" outra entidade...
+		if(!inservice)					// se ra entidade...
 		{
-			float t = (float)d.Draw();		// obtém instante de criação da próxima entidade
-			RegisterEvent(t);				// agenda evento B
-			inservice = true;				// está "gerando"
+			float t = (float)d.Draw();		// otidade
+			RegisterEvent(t);				// ag
+			inservice = true;				// e
 			if(obs != null)
-				obs.StateChange(Observer.IDLE);// para o Generate, o idle-time é o inter-arrival
+				obs.StateChange(Observer.IDLE);// para o Generate, o idler-arrival
 			Log.LogMessage(name + ":Scheduled entity generation to " + t);
 		}
 

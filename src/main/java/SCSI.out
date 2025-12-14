@@ -1,0 +1,203 @@
+
+                    Simulation Report
+
+Simulation ended at time 501.34103
+Statistics collected from instant 0.0 during 501.34103 time units.
+
+          Observers' report
+----------------------------------------------------------------------
+
+Report from observer ACT_A2.2_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 55.24975 StdDev: 4.891741 Variance: 23.929129
+ Minimum: 45.99901 Maximum: 61.999004 Observations: 8
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_FB1_OBS
+Statistics summary:
+Queue length:
+Average: 1.7544985 StdDev: 2.1807191 Variance: 4.755536
+ Minimum: 0.0 Maximum: 6.0 Observations: 33
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer ACT_FB2_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 22.235003 StdDev: 28.528902 Variance: 813.89825
+ Minimum: 0.5910034 Maximum: 128.634 Observations: 22
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_A1_OBS
+Statistics summary:
+Queue length:
+Average: 0.0 StdDev: 0.0 Variance: 0.0
+ Minimum: 0.0 Maximum: 0.0 Observations: 14
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_A2_OBS
+Statistics summary:
+Queue length:
+Average: 0.3606985 StdDev: 0.7702097 Variance: 0.593223
+ Minimum: 0.0 Maximum: 3.0 Observations: 31
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer ACT_A3_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 16.68834 StdDev: 19.123383 Variance: 365.70374
+ Minimum: 0.005004883 Maximum: 67.999 Observations: 12
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer ACT_FB4_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 23.478802 StdDev: 29.912725 Variance: 894.7712
+ Minimum: 1.2600098 Maximum: 130.869 Observations: 20
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_GEN_CONTROL_ACTION_OBS
+Statistics summary:
+Queue length:
+Average: 1.5252572 StdDev: 1.7534457 Variance: 3.0745718
+ Minimum: 0.0 Maximum: 4.0 Observations: 5
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer ACT_FB1_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 22.83165 StdDev: 31.211645 Variance: 974.16675
+ Minimum: 0.7210083 Maximum: 135.136 Observations: 20
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer ACT_FB6_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 23.3209 StdDev: 30.66656 Variance: 940.4378
+ Minimum: 1.4989929 Maximum: 134.701 Observations: 20
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_FB5_OBS
+Statistics summary:
+Queue length:
+Average: 2.3338283E-4 StdDev: 0.0010946626 Variance: 1.198286E-6
+ Minimum: 0.0 Maximum: 1.0 Observations: 22
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_FB3_OBS
+Statistics summary:
+Queue length:
+Average: 6.442681E-4 StdDev: 0.0030218854 Variance: 9.131791E-6
+ Minimum: 0.0 Maximum: 1.0 Observations: 22
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_GEN_API_DATA_OBS
+Statistics summary:
+Queue length:
+Average: 0.0 StdDev: 0.0 Variance: 0.0
+ Minimum: 0.0 Maximum: 0.0 Observations: 8
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer GEN_API_DATA_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 56.87438 StdDev: 3.9072676 Variance: 15.266741
+ Minimum: 51.0 Maximum: 61.999004 Observations: 8
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer GEN_CONTROL_ACTION_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 82.658005 StdDev: 105.94308 Variance: 11223.936
+ Minimum: 1.28302 Maximum: 259.656 Observations: 5
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_A3_OBS
+Statistics summary:
+Queue length:
+Average: 0.0 StdDev: 0.0 Variance: 0.0
+ Minimum: 0.0 Maximum: 0.0 Observations: 22
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer ACT_FB5_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 22.4072 StdDev: 30.372898 Variance: 922.51294
+ Minimum: 0.92300415 Maximum: 132.716 Observations: 20
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer ACT_A1_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 50.492336 StdDev: 75.00799 Variance: 5626.198
+ Minimum: 3.8860016 Maximum: 137.018 Observations: 3
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer ACT_FB3_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 22.919525 StdDev: 28.934118 Variance: 837.1832
+ Minimum: 1.4690247 Maximum: 129.018 Observations: 21
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_CONTROL_ALG_OBS
+Statistics summary:
+Queue length:
+Average: 0.0010671451 StdDev: 0.003070414 Variance: 9.427442E-6
+ Minimum: 0.0 Maximum: 1.0 Observations: 16
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer ACT_A2.1_OBS
+Statistics summary:
+Active state idle time (or inter-arrival time for Generate states):
+Average: 35.363422 StdDev: 41.269653 Variance: 1703.1842
+ Minimum: 13.339996 Maximum: 174.99701 Observations: 14
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_FB4_OBS
+Statistics summary:
+Queue length:
+Average: 0.0035484661 StdDev: 0.016643781 Variance: 2.7701544E-4
+ Minimum: 0.0 Maximum: 1.0 Observations: 22
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_FB6_OBS
+Statistics summary:
+Queue length:
+Average: 0.0033210793 StdDev: 0.012300679 Variance: 1.5130671E-4
+ Minimum: 0.0 Maximum: 1.0 Observations: 23
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Report from observer Q_FB2_OBS
+Statistics summary:
+Queue length:
+Average: 0.0028084468 StdDev: 0.013468836 Variance: 1.8140954E-4
+ Minimum: 0.0 Maximum: 1.0 Observations: 23
+----------------------------------------------------------------------
+
+          Histograms' report
+
+Simulation Report End

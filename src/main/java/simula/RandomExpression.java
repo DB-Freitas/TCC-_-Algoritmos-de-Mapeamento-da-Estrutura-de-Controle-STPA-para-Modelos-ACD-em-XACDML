@@ -1,5 +1,4 @@
 // Arquivo RandomExpression.java
-// Implementação das Classes do Grupo Utilitário da Biblioteca de Simulação JAVA
 // 3.Dez.1999	Wladimir
 
 package simula;
@@ -10,17 +9,14 @@ public class RandomExpression extends Expression
 	private Distribution dist;
 
 	/**
-	 * constrói uma expressão aleatória no formato:
-	 * #<nome da distribuição> <par1> [<par2>]
-	 * onde: <nome da distribuição> := normal | poisson | uniform | negexp
-	 * par1 e par2 dependem do tipo da distribuição
+
 	 */
 	public RandomExpression(String exp)
 	{
 		super(0);
 		exp.toLowerCase();
 		if(exp.charAt(0) != '#')
-			throw new IllegalArgumentException("Expressões aleatórias devem iniciar por #!");
+			throw new IllegalArgumentException("Expressï¿½es aleatï¿½rias devem iniciar por #!");
 		String temp = exp.substring(1);
 		int spindex = temp.indexOf(' ');
 		String type = temp.substring(0, spindex);
@@ -50,11 +46,11 @@ public class RandomExpression extends Expression
 				dist = new NegExp(sp, Float.parseFloat(par1));
 			}
 			else
-				throw new IllegalArgumentException("Tipo de distribuição não suportada!");
+				throw new IllegalArgumentException("Tipo de distribuiï¿½ï¿½o nï¿½o suportada!");
 		}
 		catch(NumberFormatException x)
 		{
-			throw new IllegalArgumentException("Números não reconhecidos como Float!");
+			throw new IllegalArgumentException("Nï¿½meros nï¿½o reconhecidos como Float!");
 		}
 	}
 

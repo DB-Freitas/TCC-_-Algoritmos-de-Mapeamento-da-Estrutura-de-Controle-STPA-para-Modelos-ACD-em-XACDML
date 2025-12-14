@@ -1,5 +1,4 @@
 // Arquivo Router.java
-// Implementa��o das Classes do Grupo de Modelagem da Biblioteca de Simula��o JAVA
 // 16.Abr.1999	Wladimir
 
 package simula;
@@ -14,31 +13,27 @@ public class Router extends ActiveState
 	/**
 	 * entities_from_v, entities_to_v, conditions_to_v,
 	 * resources_from_v, resources_to_v, resources_qt_v:
-	 * vetores que mant�m as liga��es e par�metros
 	 */
 	protected Vector entities_from_v, entities_to_v, conditions_to_v,
 						resources_from_v, resources_to_v, resources_qt_v;
 													
-	private Distribution d;		// gerador de n�meros aleat�rios de uma dada distribui��o
+	private Distribution d;		// gerador de
 
 	/**
-	 * fila de entidades/recursos em servi�o
+	 * fila de entidades/recu
 	 */
 	protected IntPriorityQ service_q;
 		
 	/**
-	 * se est� bloqueado
 	 */
 	protected boolean blocked;
 
 
 	/**
-	 * constr�i um estado ativo sem conex�es ou tempo de servi�o definidos.
 	 */
 	public Router(Scheduler s)
 	{
 		super(s);
-		// constr�i vetores de liga��es
 		entities_from_v = new Vector(1, 1);
 		entities_to_v = new Vector(1, 1);
 		conditions_to_v = new Vector(1, 1);
@@ -47,24 +42,11 @@ public class Router extends ActiveState
 		resources_qt_v = new Vector(1, 1);
 		service_q = new IntPriorityQ();
 	}
-	
-	/**
-	 * determina o tempo de servi�o de acordo com a distribui��o especificada;
-	 * os par�metros da distribui��o s�o passados na cria��o do objeto.
-	 */
+
 	public void SetServiceTime(Distribution d){this.d = d;}
 
-	/**
-	 * Receive a connection FROM a queue
-	 * @param from the Origin of the connection
-	 */
 	public void ConnectQueues(DeadState from) {entities_from_v.add(from);}
 
-	/**
-	 * conecta estados mortos � atividade,
-	 * mas a entidade � liberada somente se cond � satisfeita;
-	 * o usu�rio deve garantir que a entidade siga um caminho apenas (com mais condi��es).
-	 */
 	public void ConnectQueues(DeadState to, Expression cond)
 	{
 		entities_to_v.add(to);
@@ -72,7 +54,6 @@ public class Router extends ActiveState
 	}
 
 	/**
-	 * conecta recursos � atividade de forma que n�o se misturem.
 	 */
 	public void ConnectResources(ResourceQ from, ResourceQ to, int qty_needed)
 	{
@@ -82,7 +63,6 @@ public class Router extends ActiveState
 	}
 	
 	/**
-	 * Coloca objeto em seu estado inicial para simula��o
 	 */
 	public void Clear()
 	{
@@ -95,31 +75,31 @@ public class Router extends ActiveState
 	 */
 	public boolean BServed(float time)
 	{
-		if(blocked)									// n�o faz nada enquanto estiver bloqueado
+		if(blocked)
 			return false;
 
 		IntQEntry e = service_q.Dequeue();
 
-		if(e == null)						// n�o h� mais nada a servir
+		if(e == null)						//
 			return false;
 
-		if(time < e.duetime)				// servi�o foi interrompido e scheduler 
-		{									// n�o foi notificado
-			service_q.PutBack(e);				// devolve � fila para ser servido mais tarde
+		if(time < e.duetime)				// sido e scheduler
+		{									// n
+			service_q.PutBack(e);				// devais tarde
 			return false;
 		}
 
-		// fim de servi�o!
+		// fim de
 
-		for(int j = 0; j < e.ve.length; j++)					//para cada entidade em servi�o...
+		for(int j = 0; j < e.ve.length; j++)					//para
 		{
-			if(e.ve[j] == null)	// este pode ser um servi�o que estava bloqueado
+			if(e.ve[j] == null)	// este pode ser uqueado
 				continue;
 			for(int i = 0; i < entities_to_v.size(); i++)
 				if(((Expression)conditions_to_v.elementAt(i)).Evaluate(e.ve[j]) != 0)
 				{
-					DeadState q = (DeadState)entities_to_v.elementAt(i);// obt�m fila associada
-					if(q.HasSpace())									// se tem espa�o
+					DeadState q = (DeadState)entities_to_v.elementAt(i);// osociada
+					if(q.HasSpace())									// se te
 					{
 						q.Enqueue(e.ve[j]);								// envia ao estado morto
 						Log.LogMessage(name + ":Entity " + e.ve[j].GetId() +
@@ -131,9 +111,9 @@ public class Router extends ActiveState
 						e.ve[j] = null;
 					}
 					else
-						blocked = true;	// sinaliza e n�o faz nada com a entidade
+						blocked = true;	// sinaliza e
 							
-					break;												// p/ pr�x. ent em servi�o
+					break;												// p/ p
 				}
 		}
 		
@@ -141,13 +121,13 @@ public class Router extends ActiveState
 		{
 			service_q.PutBack(e);	// devolve as que restaram	
 			Log.LogMessage(name + ":Blocked");
-			return false;					// considera como n�o processado
+			return false;					// conside
 		}
 
 		for(int i = 0; i < resources_to_v.size(); i++)		// e os recursos.
 		{
 			int qt;
-			ResourceQ q = (ResourceQ)resources_to_v.elementAt(i);	// obt�m fila associada
+			ResourceQ q = (ResourceQ)resources_to_v.elementAt(i);	// o
 			q.Release(qt = ((Integer)resources_qt_v.elementAt(i)).intValue());// envia ao estado morto
 			Log.LogMessage(name + ":Released " + qt + " resources to " + q.name);
 		}
@@ -169,12 +149,12 @@ public class Router extends ActiveState
 			blocked = false;
 			while(BServed(s.GetClock()));	// extrai todos os bloqueados
 							
-			if(blocked)		// se ainda estiver bloqueado, n�o faz nada
+			if(blocked)		// se ainda estiver bloqueado
 				return false;
 			Log.LogMessage(name + ":Unblocked");
 		}
 		
-		// primeiro verifica se todos os recursos e entidades est�o dispon�veis
+		// primeiro verifica se todos os recursos e ent
 		boolean ok = true;
 		int esize = entities_from_v.size();
 
@@ -185,8 +165,8 @@ public class Router extends ActiveState
 		for(int i = 0; i < esize && ok; i++)					// as entidades...
 			ok &= ((DeadState)entities_from_v.elementAt(i)).HasEnough();
 
-		if(!ok)					// se alguma entidade ou recurso n�o estiver dispon�vel
-			return false;		// n�o realiza nada e informa scheduler
+		if(!ok)					// se al
+			return false;		// n
 		
 		IntQEntry entry = new IntQEntry(esize, (float)d.Draw());
 
@@ -195,7 +175,6 @@ public class Router extends ActiveState
 		for(int i = 0; i < esize && ok; i++)					
 			entry.ve[i] = ((DeadState)entities_from_v.elementAt(i)).Dequeue();
 																
-		// obt�m os recursos
 
 		for(int i = 0; i < resources_from_v.size(); i++)	
 		{
@@ -207,7 +186,7 @@ public class Router extends ActiveState
 		}
 
 		entry.duetime = RegisterEvent(entry.duetime);			// notifica scheduler
-		service_q.Enqueue(entry);								// coloca na fila de servi�o
+		service_q.Enqueue(entry);								// coloca na fil
 
 		if(obs != null)
 		{

@@ -1,5 +1,4 @@
 // Arquivo Variables.java
-// Implementa��o das Classes do Grupo de Modelagem da Biblioteca de Simula��o JAVA
 // 22.Abr.1999	Wladimir
 
 package simula;
@@ -7,23 +6,22 @@ package simula;
 import java.util.HashMap;
 
 /**
- * Classe que guarda vari�veis - pares (nome, valor)
  */
 public class Variables
 {
-	private HashMap table;			// armaz�m de vari�veis
-	private HashMap queues;			// armaz�m de refer�ncias �s filas
+	private HashMap table;			// armais
+	private HashMap queues;			// arm filas
 										// para obter seus comprimentos
 	
 	public Variables()
 	// construtor
 	{
-		table = new HashMap(20);		// capacidade inicial para 20 vari�veis	
+		table = new HashMap(20);		// capacidade inicial pa
 	}
 	
 	/**
-	 * cria vari�vel name e inicializa com inival;
-	 * se name j� existir, retorna false, sen�o true
+	 * cria e inicializa com inival;
+	 * se name  true
 	 */
 	public boolean CreateVar(String name, float inival)
 	{
@@ -35,19 +33,16 @@ public class Variables
 	}
 	
 	/**
-	 * cria vari�vel name e inicializa com zero;
-	 * se name j� existir, retorna false, sen�o true
+	 * cria var inicializa com zero;
+	 * se namerue
 	 */
 	public boolean CreateVar(String name){return CreateVar(name, 0);}
 	
 	/**
-	 * exclui vari�vel name
 	 */
 	public void DeleteVar(String name){table.remove(name);}
 	
 	/**
-	 * atribui � vari�vel name valor value;
-	 * se name n�o existir retorna false, sen�o true
 	 */
 	public boolean SetVar(String name, float value)
 	{
@@ -59,7 +54,6 @@ public class Variables
 	}
 	
 	/**
-	 * recupera valor da vari�vel name; se name n�o existir retorna NAN
 	 */
 	public float Value(String name)
 	{
@@ -74,12 +68,7 @@ public class Variables
 		
 		return ((Float)table.get(name)).floatValue();
 	}
-	
-	/**
-	 * atribui tabela contendo (nome da fila, refer�ncia)
-	 * de todas as filas do modelo, fazendo com que seus nomes
-	 * se tornem nomes globais; o nome de uma fila retorn seu comprimento
-	 */
+
 	public void AssignQueuesTable(HashMap qtable){queues = qtable;}
 	
 }

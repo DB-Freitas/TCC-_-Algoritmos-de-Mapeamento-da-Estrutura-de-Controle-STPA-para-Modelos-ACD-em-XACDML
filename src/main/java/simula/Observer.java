@@ -1,5 +1,4 @@
 // Arquivo Observer.java
-// Implementação das Classes do Grupo de Resultados da Biblioteca de Simulação JAVA
 // 16.Abr.1999	Wladimir
 
 package simula;
@@ -36,11 +35,10 @@ public abstract class Observer
 	}
 	
 	/**
-	 * Coloca objeto em seu estado inicial para simulação
 	 */
 	public void Clear()
 	{
-		if(hist != null)	// limpa estatísticas
+		if(hist != null)	// limpa estatï¿½sticas
 			hist.Clear();
 		if(stat != null)
 			stat.Clear();
@@ -49,24 +47,21 @@ public abstract class Observer
 	}
 
 	/**
-	 * informa a observer que houve mudança no estado do ResourceQ ou ActiveState associado.
 	 */
 	abstract public void StateChange(short to);
 	
 	/**
 	 * realiza processamento na entidade e que acaba de chegar ao Active/DeadState;
-	 * também realiza estatísticas quando aplicável.
 	 */
 	abstract public void Incoming(Entity e);
 	
 	/**
 	 * realiza processamento na entidade e prestes a sair ao Active/DeadState;
-	 * também realiza estatísticas quando aplicável.
 	 */
 	abstract public void Outgoing(Entity e);
 
 	/**
-	 * calcula a média.
+	 * calcula a mï¿½dia.
 	 */
 	public final float Mean()
 	{
@@ -76,7 +71,6 @@ public abstract class Observer
 	}
 
 	/**
-	 * calcula o desvio padrão; retorna 0 se não houverem dados suficientes.
 	 */
 	public final float StdDev()
 	{
@@ -86,7 +80,6 @@ public abstract class Observer
 	}
 
 	/**
-	 * calcula a variância; retorna 0 se não houverem dados suficientes.
 	 */
 	public final float Variance()
 	{
@@ -96,7 +89,6 @@ public abstract class Observer
 	}
 
 	/**
-	 * retorna máximo valor observado.
 	 */
 	public final float Max()
 	{
@@ -106,7 +98,6 @@ public abstract class Observer
 	}
 	
 	/**
-	 * retorna mínimo valor observado.
 	 */
 	public final float Min()
 	{
@@ -116,7 +107,6 @@ public abstract class Observer
 	}
 	
 	/**
-	 * retorna o número de observações
 	 */
 	public final int NumObs()
 	{

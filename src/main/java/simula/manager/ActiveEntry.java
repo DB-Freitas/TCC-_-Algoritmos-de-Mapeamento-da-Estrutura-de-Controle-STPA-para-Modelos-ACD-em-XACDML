@@ -1,5 +1,4 @@
 // Arquivo  ActiveEntry.java 
-// Implementa��o das Classes do Sistema de Gerenciamento da Simula��o
 // 21.Mai.1999 Wladimir
 
 package simula.manager;
@@ -13,19 +12,14 @@ import java.io.ObjectOutputStream;
  */
 public abstract class ActiveEntry extends Entry
 {
-  private static int lastid;  // identificador �NICO para os 
+  private static int lastid;  // identificadorra os
                               // estados ativos 
-	static boolean hasSerialized = true; // "lastid j� foi serializado"
+	static boolean hasSerialized = true; // "lastidlizado"
 		
-  transient simula.ActiveState SimObj;	// objeto de simula��o
-                              					// n�o � serializado
-  boolean internal;						// se � um estado ativo interno ou externo
-                              					
-	/**
-	 * FIFO, STACK, PRIORITY:
-	 * constantes que identificam
-	 * as distribui��es de servi�o
-	 */
+  transient simula.ActiveState SimObj;	// objeto
+                              					// o
+  boolean internal;						// su externo
+
   public static final short NONE    = 0;
   public static final short CONST   = 1;
   public static final short UNIFORM = 2;
@@ -34,15 +28,8 @@ public abstract class ActiveEntry extends Entry
   public static final short POISSON = 5;
   
   /**
-   * tipo de distribui��o de servi�o
    */
   protected short servicedist;
-  /**
-   * distp1, distp2:
-   * par�metros da distribui��o;
-   * t�m significados diferentes 
-   * de acordo com a distribui��o
-   */
   protected float distp1, distp2;
 
   public String toString()
@@ -84,8 +71,6 @@ public abstract class ActiveEntry extends Entry
 	return "SERVICEDIST???";
   }
   /**
-   * constr�i um objeto com id gerado internamente;
-   * preenche com argumentos padr�o os demais campos.
    */
   public ActiveEntry()
   {

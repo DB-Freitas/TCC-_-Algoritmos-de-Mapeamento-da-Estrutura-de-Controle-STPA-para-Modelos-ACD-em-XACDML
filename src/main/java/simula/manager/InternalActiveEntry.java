@@ -1,5 +1,4 @@
 // Arquivo  InternalActiveEntry.java 
-// Implementa��o das Classes do Sistema de Gerenciamento da Simula��o
 // 21.Mai.1999 Wladimir
 
 package simula.manager;
@@ -14,7 +13,7 @@ import java.util.Vector;
  */
 public class InternalActiveEntry extends ActiveEntry
 {
-  boolean router;				// especifica se � um Router ou Activity
+  boolean router;				// especificaActivity
 
   /**
    * fq, toq, fr, tor:
@@ -31,8 +30,6 @@ public class InternalActiveEntry extends ActiveEntry
    */
   private Vector rqty;	
   /**
-   * condi��es (strings) associadas;
-   * se router de sa�da, sen�o de entrada
    */
   private Vector conds;					
     
@@ -75,8 +72,7 @@ public class InternalActiveEntry extends ActiveEntry
 	return stb.toString();
   }
   /**
-   * constr�i um objeto com id gerado internamente;
-   * @param	isRouter se for do tipo Router deve passar true, sen�o false.
+
    */
   public InternalActiveEntry(boolean isRouter)
   {
@@ -116,7 +112,6 @@ public class InternalActiveEntry extends ActiveEntry
 	}
   	
   /**
-   * Ajusta os par�metros referentes aos Router's e Activity's
    */
   protected boolean Setup(SimulationManager m)
   {
@@ -236,7 +231,6 @@ public class InternalActiveEntry extends ActiveEntry
   
   /**
    * chama trimToSize() para cada Vector interno
-   * para economizar mem�ria alocada
    */
   public void TrimVectors()
 	{

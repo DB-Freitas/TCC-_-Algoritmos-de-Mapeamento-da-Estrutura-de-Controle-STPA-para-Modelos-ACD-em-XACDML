@@ -1,5 +1,4 @@
 // Arquivo  ResourceEntry.java 
-// Implementa��o das Classes do Sistema de Gerenciamento da Simula��o
 // 21.Mai.1999 Wladimir
 
 package simula.manager;
@@ -13,16 +12,16 @@ import java.io.ObjectOutputStream;
  */
 public class ResourceEntry extends Entry
 {
-  private static int lastid;  // identificador �NICO para as filas
-	static boolean hasSerialized = true; // "lastid j� foi serializado"
+  private static int lastid;  // identificadorlas
+	static boolean hasSerialized = true; // "lasto"
   
 	/**
 	 * qtde inicial de recuros
 	 */
   private short init;                 // 
     
-	transient simula.ResourceQ SimObj;	// objeto de simula��o
-																			// n�o � serializado
+	transient simula.ResourceQ SimObj;	// objeto de s
+																			// izado
 	public String toString()
 	{
 		StringBuffer stb = new StringBuffer();
@@ -34,8 +33,8 @@ public class ResourceEntry extends Entry
 		return stb.toString();
 	}
 	/**
-	 * constr�i um objeto com id gerado internamente;
-	 * preenche com argumentos padr�o os demais campos.
+	 * cons gerado internamente;
+	 * pree campos.
 	 */
   public ResourceEntry()
   {

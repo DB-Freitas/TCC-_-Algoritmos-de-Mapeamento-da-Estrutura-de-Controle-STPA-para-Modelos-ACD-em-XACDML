@@ -1,5 +1,4 @@
 // Arquivo  AttributeTable.java 
-// Implementa��o das Classes do Sistema de Gerenciamento da Simula��o
 // 30.Out.1999 Wladimir
 
 package simula.manager;
@@ -11,16 +10,12 @@ import java.util.Iterator;
 import java.util.Vector;
 
 /**
- * Entrada para os diversos tipos de entidades que podem exixtir no
- * no modelo. Usado tamb�m para as vari�veis globais. Deve ser 
- * associada aos estados Generate para iniciar os atributos de cada
- * nova Entity criada. Deve existir um exclusivo para as vari�veis
- * globais do modelo.
+
  */
 public class AttributeTable extends Entry
 {
-	private static int lastid;		// identificador �NICO para as tabelas
-	static boolean hasSerialized = true; // "lastid j� foi serializado"
+	private static int lastid;		// identificaas tabelas
+	static boolean hasSerialized = true; // "lastidzado"
 		
 	/**
 	 * atributos (Var's)
@@ -41,8 +36,6 @@ public class AttributeTable extends Entry
 		return stb.toString();
 	}
 	/**
-	 * constr�i um objeto com id gerado internamente;
-	 * preenche com argumentos padr�o os demais campos.
 	 */
 	public AttributeTable()
 	{
@@ -66,14 +59,11 @@ public class AttributeTable extends Entry
 	boolean Generate(SimulationManager m){return true;}
 	
 	/**
-	 * Retorna array de valores, na ordem em que est�o armazenados
-	 * no vetor vars. Retorna null se n�o h� valores armazenados.
 	 */
 	public float[] GetValues()
 	{
 		//if(vars.isEmpty())
 		//	return null;
-		//<tony> deixa retornar vazio mesmo que t� dando NullPointerException
 		float[] vals = new float[vars.size()];
 		Iterator it = vars.iterator();
 		int i = 0;
@@ -85,15 +75,12 @@ public class AttributeTable extends Entry
 		return vals;
 	}
 	
-	/**
-	 * Retorna array de identificadores, na ordem em que est�o 
-	 * armazenados no vetor vars. Retorna null se vars estiver vazio. 
+	/*** armazenados no vetor vars. Retorna null se vars estiver vazio.
 	 */
 	public String[] GetIds()
 	{
 		//if(vars.isEmpty())
 		//	return null;
-		//<tony> deixa retornar vazio mesmo que t� dando NullPointerException
 		String[] vals = new String[vars.size()];
 		Iterator it = vars.iterator();
 		int i = 0;

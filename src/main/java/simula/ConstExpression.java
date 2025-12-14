@@ -1,5 +1,4 @@
 // Arquivo ConstExpression.java
-// Implementação das Classes do Grupo Utilitário da Biblioteca de Simulação JAVA
 // 9.Abr.1999	Wladimir
 
 package simula;
@@ -12,7 +11,6 @@ public class ConstExpression extends Expression
 	private float value;
 
 	/**
-	 * constrói uma expressão constante
 	 */
 	public ConstExpression(float constval)
 	{

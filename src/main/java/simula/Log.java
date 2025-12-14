@@ -11,11 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Classe que implementa log da simula��o. Pode ser conectada a um
- * arquivo ou a um objeto servidor de mensagens para distribuir as
- * mensagens a diversos usu�rios distribu�dos.
- * No caso de utiliza��o de log em arquivo, este ser� gravado em 
- * arquivo texto de nome "sim"aaaa/mm/dd-hh:mm:ss.log
+
  */
 public class Log
 {
@@ -23,7 +19,6 @@ public class Log
 	// aqui uma ref ao obj servidor de mensagens
 	
 	/**
-	 * Abre arquivo de log para iniciar a sess�o.
 	 */
 	public static boolean OpenFile()
 	{

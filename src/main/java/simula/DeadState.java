@@ -1,24 +1,19 @@
 // Arquivo DeadState.java
-// Implementação das Classes do Grupo de Modelagem da Biblioteca de Simulação JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
 
 public abstract class DeadState
 {
-	private short capacity;		// quantidade máxima de entidades neste estado
+	private short capacity;
 
 	/**
-	 * número de entidades presentes
 	 */
 	protected short count = 0;
 	/**
-	 * referência ao scheduler para obter relógio
-	 * da simulação (para as estatísticas)
 	 */
 	protected Scheduler s;
 	/**
-	 * observador (para estatísticas)
 	 */
 	protected Observer obs;	
 	/**
@@ -31,25 +26,21 @@ public abstract class DeadState
 	public DeadState(Scheduler s, int max){capacity = (short)max; this.s = s;}	
 	
 	/**
-	 * retorna true se há espaço para inserir nentities entidades. 
 	 */
 	public boolean HasSpace(int nentities)
 	{return (capacity != 0)? ((short)nentities <= capacity - count) : true;}
 	
 	/**
-	 * retorna true se há espaço para inserir uma entidade. 
 	 */
 	public boolean HasSpace()
 	{return (capacity != 0)? (1 <= capacity - count) : true;}
 	
 	/**
-	 * retorna true se há nentities entidades (ou recursos) para serem retiradas.
 	 */
 	public boolean HasEnough(int nentities)	
 	{return (short)nentities <= count;}
 	
 	/**
-	 * retorna true se há uma entidade (ou recurso) para ser retirada.
 	 */
 	public boolean HasEnough()	
 	{return 1 <= count;}
@@ -71,7 +62,6 @@ public abstract class DeadState
 	}
 	
 	/**
-	 * Coloca objeto em seu estado inicial para simulação
 	 */
 	public void Clear()
 	{
@@ -82,17 +72,13 @@ public abstract class DeadState
 
 	/**
 	 * adiciona entidade e no "final" da fila; 
-	 * resultado imprevisível se ocorrer estouro da capacidade.
 	 */
 	public abstract void Enqueue(Entity e);					
 	/**
 	 * remove entidade da "frente" da fila; 
-	 * resultado imprevisível se não houver entidade a ser retirada.
 	 */
 	public abstract Entity Dequeue();						
 	/**
-	 * devolve entidade e à "frente" da fila;
-	 * resultado imprevisível se ocorrer estouro da capacidade.
 	 */
 	public abstract void PutBack(Entity e);
 }

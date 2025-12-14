@@ -1,5 +1,4 @@
 // Arquivo FifoQ.java
-// Implementa��o das Classes do Grupo de Modelagem da Biblioteca de Simula��o JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
@@ -15,7 +14,6 @@ public class FifoQ extends DeadState
 	private Vector q;					// implementa fila como vetor
 
 	/**
-	 * constr�i uma fila vazia com capacidade para max entidades. 
 	 */
 	public FifoQ(Scheduler s, short max)
 	{
@@ -24,7 +22,6 @@ public class FifoQ extends DeadState
 	} 
 	
 	/**
-	 * constr�i uma fila vazia com capacidade ilimitada. 
 	 */
 	public FifoQ(Scheduler s)
 	{
@@ -33,7 +30,6 @@ public class FifoQ extends DeadState
 	}
 	
 	/**
-	 * Coloca objeto em seu estado inicial para simula��o
 	 */
 	public void Clear()
 	{
@@ -42,7 +38,6 @@ public class FifoQ extends DeadState
 	}
 
 	/**
-	 * implementa a interface segundo a pol�tica FIFO; atualiza atributos de tamanho.
 	 */
 	public void Enqueue(Entity e)
 	{
@@ -53,7 +48,6 @@ public class FifoQ extends DeadState
 		e.EnteredQueue(s.GetClock());
 	}
 	/**
-	 * implementa a interface segundo a pol�tica FIFO; atualiza atributos de tamanho.
 	 */
 	public void PutBack(Entity e)
 	{	
@@ -64,7 +58,6 @@ public class FifoQ extends DeadState
 		e.EnteredQueue(s.GetClock());
 	}
 	/**
-	 * implementa a interface segundo a pol�tica FIFO; atualiza atributos de tamanho.
 	 */
 	public Entity Dequeue()
 	{

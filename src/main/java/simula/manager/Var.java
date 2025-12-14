@@ -1,5 +1,4 @@
 // Arquivo  Var.java 
-// Implementação das Classes do Sistema de Gerenciamento da Simulação
 // 30.Out.1999 Wladimir
 
 package simula.manager;

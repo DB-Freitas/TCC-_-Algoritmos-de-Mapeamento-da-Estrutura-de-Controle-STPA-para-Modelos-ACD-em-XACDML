@@ -1,14 +1,11 @@
 // Arquivo Sample.java
-// Implementa��o das Classes do Grupo Utilit�rio da Biblioteca de Simula��o JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
 
 import java.util.Random;
 
-/**
- * C�digo original em C adaptado de 
- * Watkins, Kevin. Discrete event simulation in C. 1993. McGraw-Hill International.
+/*** Watkins, Kevin. Discrete event simulation in C. 1993. McGraw-Hill International.
  */
 public class Sample
 {
@@ -39,7 +36,6 @@ public class Sample
 	private Random str;
 
 	/**
-	 * constr�i gerador com semente seed.
 	 */
 	public Sample(long seed)
 	{
@@ -47,7 +43,6 @@ public class Sample
 	}
 	
 	/**
-	 * constr�i gerador com semente seed., mas obt�m semente a partir do rel�gio da m�quina.
 	 */
 	public Sample()
 	{
@@ -60,21 +55,17 @@ public class Sample
 	public void Reset(long seed){str.setSeed(seed);}
 	
 	/**
-	 * obt�m amostra uniformemente distribu�da entre 0 e 1.
 	 */
 	public double Uniform(){return str.nextDouble();}
 		
 	/**
-	 * obt�m amostra exponencialmente distribu�da de m�dia 1.
 	 */
 	public double NegExp()
 	{
 		return  -Math.log(Uniform());
 	}
 	
-	/**
-	 * obt�m amostra distribu�da de acordo com Laplace de m�dia 1.
-	 */
+	/***/
 	public double Laplace()
 	{
 		if (Uniform() <= 0.5)

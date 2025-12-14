@@ -1,5 +1,4 @@
 // Arquivo Entity.java
-// Implementa��o das Classes do Grupo de Modelagem da Biblioteca de Simula��o JAVA
 // 26.Mar.1999	Wladimir
 
 package simula;
@@ -9,11 +8,9 @@ import java.util.HashMap;
 class Entity
 {
 	/**
-	 * A m�nima prioridade (255)
 	 */
 	public static final short MinPriority = 255;	
 	/**
-	 * A m�xima prioridade (ZERO)
 	 */
 	public static final short MaxPriority = 0;
 	private static long counter = 1;
@@ -21,15 +18,15 @@ class Entity
 	private long 	id;							// id da entidade
 	private float creationtime;
 	private float timestamp;
-	private short priority = 128;	// valor padr�o
+	private short priority = 128;	// valo
 	private float qentertime;			// instante em que entrou na fila atual
 	private float totalqtime = 0;	// tempo total que passou em filas
-	private float qtime = 0;			// tempo que passou na �ltima fila
+	private float qtime = 0;			// tempo que passou  fila
 
 	private HashMap attributes;
 
 	/**
-	 * constr�i uma entidade e atribui o instante da sua cria��o.
+	 * coma entidade e atribui o instante da su
 	 */
 	public Entity(float creationtime)
 	{
@@ -38,36 +35,35 @@ class Entity
 	}
 	
 	/**
-	 * obt�m instante de cria��o.
+	 * obt
 	 */
 	public float GetCreationTime(){return creationtime;}
 	
 	/**
-	 * obt�m valor de um atributo personalisado.
+	 * obtor de um atributo personalisado.
 	 */
 	public float GetAttribute(String name)
 	{
 		if(attributes == null)
 			return Float.NaN;
 		Float data = (Float)attributes.get(name);
-		if(data == null)							// atributo n�o existe
+		if(data == null)							// atributte
 			return Float.NaN;
 		
 		return data.floatValue();
 	}
 
 	/**
-	 * atribui valor a um atributo personalisado; cria, se necess�rio. 
+	 * atribui valor a um atributo personalisado; cria, se io.
 	 */
 	public void SetAttribute(String name, float value)
 	{
 		if(attributes == null)
-			attributes = new HashMap(5);			// cria a tabela na primeira atribui��o
+			attributes = new HashMap(5);			// cria a tabela na primeira at
 		attributes.put(name, new Float(value));		// armazena
 	}
 
 	/**
-	 * determina prioridade de uma entidade em rela��o �s outras.
 	 */
 	public void SetPriority(short p)
 	{
@@ -80,27 +76,22 @@ class Entity
 	}
 
 	/**
-	 * obt�m prioridade da entidade.
 	 */
 	public short GetPriority(){return priority;} 
 
 	/**
-	 * faz uma marca��o de tempo na entidade.
 	 */
 	public void Stamp(float time){timestamp = time;}
 
 	/**
-	 * obt�m valor da �ltima marca��o.
 	 */
 	public float GetTimestamp(){return timestamp;}
 
 	/**
-	 * obt�m o tempo em que a entidade ficou em filas
 	 */
 	public float GetTotalQueueTime(){return totalqtime;}
 
 	/**
-	 * obt�m o tempo em que a entidade ficou em filas
 	 */
 	public long GetId(){return id;}
 
