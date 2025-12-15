@@ -45,12 +45,20 @@ Neste repositório você encontrará:
 
 ![Algoritmo 5](imagens/alg_5.png)
 
-## Como Gerar o Código Java Automaticamente (Linux Ubuntu 24.04)
+## Como Gerar o Código Java Automaticamente
 
 Antes de executar transformações XSLT, é necessário instalar a ferramenta xsltproc.
-Podemos instala-la com 2 comandos: 
+Podemos instala-la no Linux com os comandos: 
 > * apt search xsltproc 
 > * sudo apt install xsltproc
+
+Ou no Mac via Homebrew (maneira mais facil) executando: 
+> brew install libxslt
+
+Ou usando MacPorts:
+> port install xsltproc
+
+Ambos os gerenciadores de pacotes cuidam de dependências como libxml2, facilitando a obtenção da ferramenta de linha de comando para transformações XSL. 
 
 Após a instalaçãodo xsltproc:
 
